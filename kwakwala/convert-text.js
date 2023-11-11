@@ -1104,24 +1104,24 @@
 
   // output/Control.Monad/index.js
   var unlessM = function(dictMonad) {
-    var bind24 = bind(dictMonad.Bind1());
+    var bind25 = bind(dictMonad.Bind1());
     var unless2 = unless(dictMonad.Applicative0());
     return function(mb) {
       return function(m) {
-        return bind24(mb)(function(b2) {
+        return bind25(mb)(function(b2) {
           return unless2(b2)(m);
         });
       };
     };
   };
   var ap = function(dictMonad) {
-    var bind24 = bind(dictMonad.Bind1());
-    var pure28 = pure(dictMonad.Applicative0());
+    var bind25 = bind(dictMonad.Bind1());
+    var pure29 = pure(dictMonad.Applicative0());
     return function(f) {
       return function(a2) {
-        return bind24(f)(function(f$prime) {
-          return bind24(a2)(function(a$prime) {
-            return pure28(f$prime(a$prime));
+        return bind25(f)(function(f$prime) {
+          return bind25(a2)(function(a$prime) {
+            return pure29(f$prime(a$prime));
           });
         });
       };
@@ -1788,10 +1788,10 @@
     var catchError1 = catchError(dictMonadError);
     var Monad0 = dictMonadError.MonadThrow0().Monad0();
     var map31 = map(Monad0.Bind1().Apply0().Functor0());
-    var pure28 = pure(Monad0.Applicative0());
+    var pure29 = pure(Monad0.Applicative0());
     return function(a2) {
       return catchError1(map31(Right.create)(a2))(function($52) {
-        return pure28(Left.create($52));
+        return pure29(Left.create($52));
       });
     };
   };
@@ -2269,13 +2269,13 @@
     };
   };
   var bindExceptT = function(dictMonad) {
-    var bind24 = bind(dictMonad.Bind1());
-    var pure28 = pure(dictMonad.Applicative0());
+    var bind25 = bind(dictMonad.Bind1());
+    var pure29 = pure(dictMonad.Applicative0());
     return {
       bind: function(v) {
         return function(k) {
-          return bind24(v)(either(function($187) {
-            return pure28(Left.create($187));
+          return bind25(v)(either(function($187) {
+            return pure29(Left.create($187));
           })(function(a2) {
             var v1 = k(a2);
             return v1;
@@ -2385,13 +2385,13 @@
   };
   var traverse_ = function(dictApplicative) {
     var applySecond7 = applySecond(dictApplicative.Apply0());
-    var pure28 = pure(dictApplicative);
+    var pure29 = pure(dictApplicative);
     return function(dictFoldable) {
       var foldr22 = foldr(dictFoldable);
       return function(f) {
         return foldr22(function($454) {
           return applySecond7(f($454));
-        })(pure28(unit));
+        })(pure29(unit));
       };
     };
   };
@@ -2501,13 +2501,13 @@
     }
     return function(apply3) {
       return function(map31) {
-        return function(pure28) {
+        return function(pure29) {
           return function(f) {
             return function(array) {
               function go2(bot, top3) {
                 switch (top3 - bot) {
                   case 0:
-                    return pure28([]);
+                    return pure29([]);
                   case 1:
                     return map31(array1)(f(array[bot]));
                   case 2:
@@ -2825,12 +2825,12 @@
   // output/Control.Monad.State.Trans/index.js
   var monadTransStateT = {
     lift: function(dictMonad) {
-      var bind24 = bind(dictMonad.Bind1());
-      var pure28 = pure(dictMonad.Applicative0());
+      var bind25 = bind(dictMonad.Bind1());
+      var pure29 = pure(dictMonad.Applicative0());
       return function(m) {
         return function(s) {
-          return bind24(m)(function(x) {
-            return pure28(new Tuple(x, s));
+          return bind25(m)(function(x) {
+            return pure29(new Tuple(x, s));
           });
         };
       };
@@ -2869,12 +2869,12 @@
     };
   };
   var bindStateT = function(dictMonad) {
-    var bind24 = bind(dictMonad.Bind1());
+    var bind25 = bind(dictMonad.Bind1());
     return {
       bind: function(v) {
         return function(f) {
           return function(s) {
-            return bind24(v(s))(function(v1) {
+            return bind25(v(s))(function(v1) {
               var v3 = f(v1.value0);
               return v3(v1.value1);
             });
@@ -2896,11 +2896,11 @@
     };
   };
   var applicativeStateT = function(dictMonad) {
-    var pure28 = pure(dictMonad.Applicative0());
+    var pure29 = pure(dictMonad.Applicative0());
     return {
       pure: function(a2) {
         return function(s) {
-          return pure28(new Tuple(a2, s));
+          return pure29(new Tuple(a2, s));
         };
       },
       Apply0: function() {
@@ -2910,8 +2910,8 @@
   };
   var monadRecStateT = function(dictMonadRec) {
     var Monad0 = dictMonadRec.Monad0();
-    var bind24 = bind(Monad0.Bind1());
-    var pure28 = pure(Monad0.Applicative0());
+    var bind25 = bind(Monad0.Bind1());
+    var pure29 = pure(Monad0.Applicative0());
     var tailRecM4 = tailRecM(dictMonadRec);
     var monadStateT1 = monadStateT(Monad0);
     return {
@@ -2919,8 +2919,8 @@
         return function(a2) {
           var f$prime = function(v) {
             var v1 = f(v.value0);
-            return bind24(v1(v.value1))(function(v2) {
-              return pure28(function() {
+            return bind25(v1(v.value1))(function(v2) {
+              return pure29(function() {
                 if (v2.value0 instanceof Loop) {
                   return new Loop(new Tuple(v2.value0.value0, v2.value1));
                 }
@@ -2944,12 +2944,12 @@
     };
   };
   var monadStateStateT = function(dictMonad) {
-    var pure28 = pure(dictMonad.Applicative0());
+    var pure29 = pure(dictMonad.Applicative0());
     var monadStateT1 = monadStateT(dictMonad);
     return {
       state: function(f) {
         return function($200) {
-          return pure28(f($200));
+          return pure29(f($200));
         };
       },
       Monad0: function() {
@@ -3165,6 +3165,7 @@
 
   // output/Web.HTML.HTMLElement/index.js
   var toNode = unsafeCoerce2;
+  var toChildNode = unsafeCoerce2;
   var fromElement = function(x) {
     return _read(Nothing.value, Just.create, x);
   };
@@ -3647,11 +3648,11 @@
       var Alt0 = dictAlternative.Plus1().Alt0();
       var alt13 = alt(Alt0);
       var map115 = map(Alt0.Functor0());
-      var pure28 = pure(dictAlternative.Applicative0());
+      var pure29 = pure(dictAlternative.Applicative0());
       return function(p2) {
         var go2 = function(acc) {
-          return bind110(alt13(map115(Loop.create)(p2))(pure28(new Done(unit))))(function(aa) {
-            return pure28(bimap2(function(v) {
+          return bind110(alt13(map115(Loop.create)(p2))(pure29(new Done(unit))))(function(aa) {
+            return pure29(bimap2(function(v) {
               return new Cons(v, acc);
             })(function(v) {
               return reverse(acc);
@@ -5931,7 +5932,7 @@
     return Lift.create;
   }();
   var goLeft = function(dictApplicative) {
-    var pure28 = pure(dictApplicative);
+    var pure29 = pure(dictApplicative);
     return function(fStack) {
       return function(valStack) {
         return function(nat) {
@@ -5939,7 +5940,7 @@
             return function(count) {
               if (func instanceof Pure) {
                 return new Tuple(new Cons({
-                  func: pure28(func.value0),
+                  func: pure29(func.value0),
                   count
                 }, fStack), valStack);
               }
@@ -6010,7 +6011,7 @@
   };
   var foldFreeAp = function(dictApplicative) {
     var goApply1 = goApply(dictApplicative);
-    var pure28 = pure(dictApplicative);
+    var pure29 = pure(dictApplicative);
     var goLeft1 = goLeft(dictApplicative);
     return function(nat) {
       return function(z) {
@@ -6019,7 +6020,7 @@
           var $tco_result;
           function $tco_loop(v) {
             if (v.value1.value0 instanceof Pure) {
-              var v1 = goApply1(v.value0)(v.value1.value1)(pure28(v.value1.value0.value0));
+              var v1 = goApply1(v.value0)(v.value1.value1)(pure29(v.value1.value0.value0));
               if (v1 instanceof Left) {
                 $tco_done = true;
                 return v1.value0;
@@ -7948,10 +7949,10 @@
   // output/Foreign.Index/index.js
   var unsafeReadProp = function(dictMonad) {
     var fail3 = fail(dictMonad);
-    var pure28 = pure(applicativeExceptT(dictMonad));
+    var pure29 = pure(applicativeExceptT(dictMonad));
     return function(k) {
       return function(value18) {
-        return unsafeReadPropImpl(fail3(new TypeMismatch("object", typeOf(value18))), pure28, k, value18);
+        return unsafeReadPropImpl(fail3(new TypeMismatch("object", typeOf(value18))), pure29, k, value18);
       };
     };
   };
@@ -8740,7 +8741,7 @@
         return new Min2(v1);
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Types (line 258, column 1 - line 258, column 49): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Types (line 264, column 1 - line 264, column 49): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var isKwkVow = function(v) {
@@ -8779,7 +8780,7 @@
       return isKwkVow(v.value0);
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Types (line 295, column 1 - line 295, column 36): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Types (line 301, column 1 - line 301, column 36): " + [v.constructor.name]);
   };
   var isKwkVow$prime$prime = function(v) {
     if (v instanceof Kwak) {
@@ -9295,7 +9296,7 @@
         return "E";
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.Grubb (line 129, column 1 - line 129, column 58): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.Grubb (line 134, column 1 - line 134, column 58): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var outputGrubbAsciiX = function(v) {
@@ -9590,7 +9591,7 @@
         return "e";
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.Grubb (line 50, column 1 - line 50, column 58): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.Grubb (line 55, column 1 - line 55, column 58): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var outputGrubbAsciiLetter = function(v) {
@@ -9603,7 +9604,7 @@
         return outputGrubbAsciiX(v)(v1.value0);
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.Grubb (line 207, column 1 - line 207, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.Grubb (line 212, column 1 - line 212, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var outputGrubbAsciiChars$prime = function(v) {
@@ -9631,7 +9632,7 @@
         return outputGrubbAsciiLetter(v)(v1.value0.value0) + outputGrubbAsciiChars$prime(v)(v1.value1);
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.Grubb (line 227, column 1 - line 227, column 67): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.Grubb (line 232, column 1 - line 232, column 67): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var outputGrubbAsciiChars = function(v) {
@@ -9926,7 +9927,7 @@
         return "\u0259";
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.IPA (line 70, column 1 - line 70, column 49): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.IPA (line 64, column 1 - line 64, column 49): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var outputIPALetter = function(v) {
@@ -9939,7 +9940,7 @@
         return outputIpaX(v)(v1.value0);
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.IPA (line 147, column 1 - line 147, column 55): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.IPA (line 141, column 1 - line 141, column 55): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var outputIPAChar = function(v) {
@@ -9952,7 +9953,7 @@
         return v1.value0;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.IPA (line 152, column 1 - line 152, column 51): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.IPA (line 146, column 1 - line 146, column 51): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var outputIPAChars = function(ops) {
@@ -10990,7 +10991,7 @@
       return "\u018F";
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Output.Napa (line 86, column 1 - line 86, column 36): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Output.Napa (line 92, column 1 - line 92, column 36): " + [v.constructor.name]);
   };
   var outputNAPA = function(v) {
     if (v instanceof M) {
@@ -11185,7 +11186,7 @@
       return "\u0259";
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Output.Napa (line 36, column 1 - line 36, column 35): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Output.Napa (line 42, column 1 - line 42, column 35): " + [v.constructor.name]);
   };
   var outputNapaLetter = function(v) {
     if (v instanceof Maj) {
@@ -11196,7 +11197,7 @@
       return outputNAPA(v.value0);
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Output.Napa (line 136, column 1 - line 136, column 42): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Output.Napa (line 142, column 1 - line 142, column 42): " + [v.constructor.name]);
   };
   var outputNapaChar = function(v) {
     if (v instanceof Kwak) {
@@ -11207,7 +11208,7 @@
       return v.value0;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Output.Napa (line 140, column 1 - line 140, column 38): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Output.Napa (line 146, column 1 - line 146, column 38): " + [v.constructor.name]);
   };
   var outputNapaChars = function(xs) {
     return foldMap3(outputNapaChar)(xs);
@@ -11241,7 +11242,7 @@
           return "\u160A";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 23, column 11 - line 29, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 52, column 11 - line 58, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof MYc) {
@@ -11269,7 +11270,7 @@
           return "\u1427\u160A";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 30, column 11 - line 36, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 59, column 11 - line 65, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Nc) {
@@ -11297,7 +11298,7 @@
           return "\u1604";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 37, column 11 - line 43, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 66, column 11 - line 72, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof NYc) {
@@ -11325,7 +11326,7 @@
           return "\u1427\u1604";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 44, column 11 - line 50, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 73, column 11 - line 79, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Pc) {
@@ -11353,7 +11354,7 @@
           return "\u1642";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 53, column 11 - line 59, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 82, column 11 - line 88, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Tc) {
@@ -11381,7 +11382,7 @@
           return "\u15DE";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 60, column 11 - line 66, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 89, column 11 - line 95, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Bc) {
@@ -11409,7 +11410,7 @@
           return "\u15EA";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 67, column 11 - line 73, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 96, column 11 - line 102, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Dc) {
@@ -11437,7 +11438,7 @@
           return "\u1450";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 74, column 11 - line 80, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 103, column 11 - line 109, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof PYc) {
@@ -11465,7 +11466,7 @@
           return "\u164A";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 81, column 11 - line 87, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 110, column 11 - line 116, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof TYc) {
@@ -11493,7 +11494,7 @@
           return "\u15E4";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 88, column 11 - line 94, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 117, column 11 - line 123, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof TSc) {
@@ -11521,7 +11522,7 @@
           return "\u1663";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 97, column 12 - line 103, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 126, column 12 - line 132, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof TLc) {
@@ -11549,7 +11550,7 @@
           return "\u1636";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 104, column 12 - line 110, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 133, column 12 - line 139, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof DZc) {
@@ -11577,7 +11578,7 @@
           return "\u1656";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 111, column 12 - line 117, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 140, column 12 - line 146, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof DLc) {
@@ -11605,7 +11606,7 @@
           return "\u162A";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 118, column 12 - line 124, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 147, column 12 - line 153, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof TSYc) {
@@ -11633,7 +11634,7 @@
           return "\u1669";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 125, column 12 - line 131, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 154, column 12 - line 160, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof TLYc) {
@@ -11661,7 +11662,7 @@
           return "\u163C";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 132, column 12 - line 138, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 161, column 12 - line 167, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Sc) {
@@ -11689,7 +11690,7 @@
           return "\u1650";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 141, column 11 - line 147, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 170, column 11 - line 176, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof LHc) {
@@ -11717,7 +11718,7 @@
           return "\u1630";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 148, column 11 - line 154, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 177, column 11 - line 183, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Lc) {
@@ -11745,7 +11746,7 @@
           return "\u1624";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 157, column 11 - line 163, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 186, column 11 - line 192, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof LYc) {
@@ -11773,7 +11774,7 @@
           return "\u1427\u1624";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 164, column 11 - line 170, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 193, column 11 - line 199, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Jc) {
@@ -11801,7 +11802,7 @@
           return "\u1610";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 171, column 11 - line 177, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 200, column 11 - line 206, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof JYc) {
@@ -11829,7 +11830,7 @@
           return "\u1427\u1610";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 178, column 11 - line 184, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 207, column 11 - line 213, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Kc) {
@@ -11857,7 +11858,7 @@
           return "\u15F7";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 187, column 12 - line 193, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 216, column 12 - line 222, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof KWc) {
@@ -11885,7 +11886,7 @@
           return "\u15F7\u1424";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 194, column 12 - line 200, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 223, column 12 - line 229, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Gc) {
@@ -11913,7 +11914,7 @@
           return "\u15F1";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 201, column 12 - line 207, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 230, column 12 - line 236, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof GWc) {
@@ -11941,7 +11942,7 @@
           return "\u15F1\u1424";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 208, column 12 - line 214, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 237, column 12 - line 243, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof KYc) {
@@ -11969,7 +11970,7 @@
           return "\u15FD";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 215, column 12 - line 221, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 244, column 12 - line 250, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof KWYc) {
@@ -11997,7 +11998,7 @@
           return "\u15FD\u1424";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 222, column 12 - line 228, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 251, column 12 - line 257, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Qc) {
@@ -12025,7 +12026,7 @@
           return "\u1617";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 232, column 12 - line 238, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 261, column 12 - line 267, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof QWc) {
@@ -12053,7 +12054,7 @@
           return "\u1617\u1424";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 239, column 12 - line 245, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 268, column 12 - line 274, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof GUc) {
@@ -12081,7 +12082,7 @@
           return "\u15CC";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 246, column 12 - line 252, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 275, column 12 - line 281, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof GUWc) {
@@ -12109,7 +12110,7 @@
           return "\u15CC\u1424";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 253, column 12 - line 259, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 282, column 12 - line 288, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof QYc) {
@@ -12137,7 +12138,7 @@
           return "\u161E";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 260, column 12 - line 266, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 289, column 12 - line 295, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof QWYc) {
@@ -12165,7 +12166,7 @@
           return "\u161E\u1424";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 267, column 12 - line 273, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 296, column 12 - line 302, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Xc) {
@@ -12193,7 +12194,7 @@
           return "\u15C6";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 277, column 12 - line 283, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 306, column 12 - line 312, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof XWc) {
@@ -12221,7 +12222,7 @@
           return "\u15C6\u1424";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 284, column 12 - line 290, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 313, column 12 - line 319, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof XUc) {
@@ -12249,7 +12250,7 @@
           return "\u15D8";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 291, column 12 - line 297, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 320, column 12 - line 326, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof XUWc) {
@@ -12277,7 +12278,7 @@
           return "\u15D8\u1424";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 298, column 12 - line 304, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 327, column 12 - line 333, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Wc) {
@@ -12305,7 +12306,7 @@
           return "\u15D2";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 307, column 11 - line 313, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 336, column 11 - line 342, column 16): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof WYc) {
@@ -12333,7 +12334,7 @@
           return "\u1427\u15D2";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 314, column 11 - line 320, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 343, column 11 - line 349, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Yc) {
@@ -12361,7 +12362,7 @@
           return "\u1427\u1405";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 323, column 10 - line 329, column 17): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 352, column 10 - line 358, column 17): " + [vwl.constructor.name]);
       }
       ;
       if (cns instanceof Hc) {
@@ -12389,10 +12390,10 @@
           return "\u1433";
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 330, column 10 - line 336, column 16): " + [vwl.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 359, column 10 - line 365, column 16): " + [vwl.constructor.name]);
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 21, column 24 - line 336, column 16): " + [cns.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 50, column 24 - line 365, column 16): " + [cns.constructor.name]);
     };
   };
   var makeVowel = function(v) {
@@ -12420,7 +12421,7 @@
       return "\u1405";
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 12, column 1 - line 12, column 33): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 38, column 1 - line 38, column 33): " + [v.constructor.name]);
   };
   var letterCoda = function(kwc) {
     if (kwc instanceof Mc) {
@@ -12591,7 +12592,7 @@
       return "\u144B";
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 339, column 18 - line 399, column 16): " + [kwc.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Output.Syllabic.Tables (line 371, column 18 - line 431, column 16): " + [kwc.constructor.name]);
   };
 
   // output/Kwakwala.Types.Tables/index.js
@@ -30040,7 +30041,7 @@
         return lift3(fail2("Already reached EOF."));
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 194, column 3 - line 198, column 58): " + [st.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 219, column 3 - line 223, column 58): " + [st.constructor.name]);
     });
   });
   var getVowel = /* @__PURE__ */ bind16(/* @__PURE__ */ lift3(peek))(function(rslt) {
@@ -30062,10 +30063,10 @@
         });
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 114, column 17 - line 118, column 15): " + [v.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 139, column 17 - line 143, column 15): " + [v.constructor.name]);
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 112, column 3 - line 118, column 15): " + [rslt.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 137, column 3 - line 143, column 15): " + [rslt.constructor.name]);
   });
   var parseVowel = /* @__PURE__ */ bind16(getVowel)(function(v) {
     return bind16(get7)(function(c) {
@@ -30089,7 +30090,7 @@
         return lift3(fail2("Already reached End of File"));
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 170, column 3 - line 178, column 59): " + [c.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 195, column 3 - line 203, column 59): " + [c.constructor.name]);
     });
   });
   var getPunct = /* @__PURE__ */ bind16(/* @__PURE__ */ lift3(peek))(function(rslt) {
@@ -30131,7 +30132,7 @@
         });
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 153, column 3 - line 164, column 17): " + [st.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 178, column 3 - line 189, column 17): " + [st.constructor.name]);
     });
   });
   var getCons = /* @__PURE__ */ bind16(/* @__PURE__ */ lift3(peek))(function(rslt) {
@@ -30153,10 +30154,10 @@
         });
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 129, column 17 - line 133, column 15): " + [v.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 154, column 17 - line 158, column 15): " + [v.constructor.name]);
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 127, column 3 - line 133, column 15): " + [rslt.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 152, column 3 - line 158, column 15): " + [rslt.constructor.name]);
   });
   var parseCons = /* @__PURE__ */ bind16(getCons)(function(c) {
     return bind16(get7)(function(s) {
@@ -30176,7 +30177,7 @@
         return lift3(fail2("Already reached End of File."));
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 184, column 3 - line 188, column 66): " + [s.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 209, column 3 - line 213, column 66): " + [s.constructor.name]);
     });
   });
   var emitSyllabic = /* @__PURE__ */ alt6(parseCons)(/* @__PURE__ */ alt6(parseVowel)(parsePuncts));
@@ -30191,7 +30192,7 @@
       return v.value0;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 70, column 23 - line 72, column 19): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Output.Syllabic (line 95, column 23 - line 97, column 19): " + [v.constructor.name]);
   };
 
   // output/Kwakwala.Output.Umista/index.js
@@ -30388,7 +30389,7 @@
       return "A\u0331";
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Output.Umista (line 110, column 1 - line 110, column 38): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Output.Umista (line 117, column 1 - line 117, column 38): " + [v.constructor.name]);
   };
   var outputUmista = function(v) {
     if (v instanceof M) {
@@ -30583,7 +30584,7 @@
       return "a\u0331";
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Output.Umista (line 59, column 1 - line 59, column 37): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Output.Umista (line 66, column 1 - line 66, column 37): " + [v.constructor.name]);
   };
   var outputUmistaLetter = function(v) {
     if (v instanceof Maj) {
@@ -30594,7 +30595,7 @@
       return outputUmista(v.value0);
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Output.Umista (line 161, column 1 - line 161, column 44): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Output.Umista (line 168, column 1 - line 168, column 44): " + [v.constructor.name]);
   };
   var outputUmistaChars$prime = function(v) {
     if (v instanceof Nil) {
@@ -30620,7 +30621,7 @@
       return outputUmistaLetter(v.value0.value0) + outputUmistaChars$prime(v.value1);
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Output.Umista (line 181, column 1 - line 181, column 47): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Output.Umista (line 188, column 1 - line 188, column 47): " + [v.constructor.name]);
   };
   var outputUmistaChars = function(v) {
     if (v instanceof Nil) {
@@ -30680,7 +30681,7 @@
         return Nothing.value;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Helpers (line 68, column 11 - line 68, column 32): " + [v.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Helpers (line 77, column 11 - line 77, column 32): " + [v.constructor.name]);
     };
     return bind17(map24(fx)(peekChar1))(maybe(pure20(Nothing.value))(function(x) {
       return voidLeft5(anyChar)(new Just(x));
@@ -30696,7 +30697,7 @@
         return v(v1.value0);
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Helpers (line 73, column 1 - line 73, column 58): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Helpers (line 82, column 1 - line 82, column 58): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var isUpperC = function(c) {
@@ -30772,7 +30773,7 @@
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 381, column 1 - line 381, column 53): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 390, column 1 - line 390, column 53): " + [v.constructor.name]);
   };
   var parseW = /* @__PURE__ */ function() {
     return alt8(voidLeft6($$char("w"))(new Min2(W.value)))(voidLeft6($$char("W"))(new Maj(W.value)));
@@ -30794,7 +30795,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 241, column 1 - line 241, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 250, column 1 - line 250, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseS = /* @__PURE__ */ function() {
@@ -30847,7 +30848,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 211, column 1 - line 211, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 220, column 1 - line 220, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseD = /* @__PURE__ */ bind18(/* @__PURE__ */ map25(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -30912,7 +30913,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 325, column 1 - line 325, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 334, column 1 - line 334, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseKE = function(v) {
@@ -30932,7 +30933,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 269, column 1 - line 269, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 278, column 1 - line 278, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQE = function(v) {
@@ -30952,7 +30953,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 296, column 1 - line 296, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 305, column 1 - line 305, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseXU = function(v) {
@@ -30972,7 +30973,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 353, column 1 - line 353, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 362, column 1 - line 362, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var isGlottal = function(v) {
@@ -31007,7 +31008,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 263, column 1 - line 263, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 272, column 1 - line 272, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseKW = function(v) {
@@ -31027,7 +31028,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 275, column 1 - line 275, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 284, column 1 - line 284, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseP = /* @__PURE__ */ bind18(/* @__PURE__ */ map25(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31054,7 +31055,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 302, column 1 - line 302, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 311, column 1 - line 311, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQ$prime = function(v) {
@@ -31078,7 +31079,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 289, column 1 - line 289, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 298, column 1 - line 298, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQ = /* @__PURE__ */ bind18(/* @__PURE__ */ map25(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31103,7 +31104,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 235, column 1 - line 235, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 244, column 1 - line 244, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseT$prime = function(v) {
@@ -31127,7 +31128,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 228, column 1 - line 228, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 237, column 1 - line 237, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseT = /* @__PURE__ */ bind18(/* @__PURE__ */ map25(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31159,7 +31160,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 331, column 1 - line 331, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 340, column 1 - line 340, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseTL$prime = function(v) {
@@ -31183,7 +31184,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 367, column 1 - line 367, column 63): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 376, column 1 - line 376, column 63): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseTL = /* @__PURE__ */ bind18(/* @__PURE__ */ map25(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31243,7 +31244,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 316, column 1 - line 316, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 325, column 1 - line 325, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG = /* @__PURE__ */ bind18(/* @__PURE__ */ map25(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31276,7 +31277,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 255, column 1 - line 255, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 264, column 1 - line 264, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK = /* @__PURE__ */ bind18(/* @__PURE__ */ map25(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31309,7 +31310,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 345, column 1 - line 345, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 354, column 1 - line 354, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseX = /* @__PURE__ */ bind18(/* @__PURE__ */ map25(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31345,7 +31346,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 399, column 1 - line 399, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 408, column 1 - line 408, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseA = /* @__PURE__ */ bind18(/* @__PURE__ */ map25(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31370,7 +31371,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 414, column 1 - line 414, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 423, column 1 - line 423, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseI = /* @__PURE__ */ bind18(/* @__PURE__ */ map25(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31395,7 +31396,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 428, column 1 - line 428, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 437, column 1 - line 437, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseU = /* @__PURE__ */ bind18(/* @__PURE__ */ map25(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31424,7 +31425,7 @@
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 153, column 1 - line 153, column 50): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 162, column 1 - line 162, column 50): " + [v.constructor.name]);
   };
   var caseOf = function(v) {
     if (v instanceof Maj) {
@@ -31435,7 +31436,7 @@
       return Min2.create;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 111, column 1 - line 111, column 51): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 120, column 1 - line 120, column 51): " + [v.constructor.name]);
   };
   var parseBoasWord$prime = function(ltr) {
     if (isKwkVow$prime(ltr)) {
@@ -31450,7 +31451,7 @@
       })(many(parseBoasLetter));
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 106, column 1 - line 106, column 66): " + [ltr.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Boas (line 115, column 1 - line 115, column 66): " + [ltr.constructor.name]);
   };
   var parseBoasWord = /* @__PURE__ */ bind18(parseBoasLetter)(parseBoasWord$prime);
   var parseBoasMain = /* @__PURE__ */ function() {
@@ -31520,7 +31521,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 296, column 1 - line 296, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 297, column 1 - line 297, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseS2 = /* @__PURE__ */ bind19(/* @__PURE__ */ map26(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31575,7 +31576,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 229, column 1 - line 229, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 230, column 1 - line 230, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseD2 = /* @__PURE__ */ bind19(/* @__PURE__ */ map26(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31628,7 +31629,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 179, column 1 - line 179, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 180, column 1 - line 180, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseKHY = function(v) {
@@ -31648,7 +31649,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 146, column 1 - line 146, column 65): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 147, column 1 - line 147, column 65): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseXU2 = function(v) {
@@ -31668,7 +31669,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 209, column 1 - line 209, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 210, column 1 - line 210, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseXW = function(v) {
@@ -31688,7 +31689,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 215, column 1 - line 215, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 216, column 1 - line 216, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var isH = function(v) {
@@ -31719,7 +31720,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 476, column 1 - line 476, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 477, column 1 - line 477, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseE2 = /* @__PURE__ */ bind19(/* @__PURE__ */ map26(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31744,7 +31745,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 185, column 1 - line 185, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 186, column 1 - line 186, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG$prime2 = function(v) {
@@ -31768,7 +31769,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 172, column 1 - line 172, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 173, column 1 - line 173, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG2 = /* @__PURE__ */ bind19(/* @__PURE__ */ map26(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31797,7 +31798,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 139, column 1 - line 139, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 140, column 1 - line 140, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseLonly$prime = function(v) {
@@ -31817,7 +31818,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 400, column 1 - line 400, column 66): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 401, column 1 - line 401, column 66): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseLonly = /* @__PURE__ */ bind19(/* @__PURE__ */ map26(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31846,7 +31847,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 202, column 1 - line 202, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 203, column 1 - line 203, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseX2 = /* @__PURE__ */ bind19(/* @__PURE__ */ map26(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31893,7 +31894,7 @@
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 430, column 1 - line 430, column 53): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 431, column 1 - line 431, column 53): " + [v.constructor.name]);
   };
   var isApostCP = /* @__PURE__ */ disj1(/* @__PURE__ */ eqCP("'"))(/* @__PURE__ */ disj1(/* @__PURE__ */ eqCP("`"))(/* @__PURE__ */ disj1(/* @__PURE__ */ eqCP("\u0315"))(/* @__PURE__ */ disj1(/* @__PURE__ */ eqCP("\u0313"))(/* @__PURE__ */ disj1(/* @__PURE__ */ eqCP("\u02BC"))(/* @__PURE__ */ eqCP("7"))))));
   var parsePuncts3 = /* @__PURE__ */ function() {
@@ -31946,7 +31947,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 158, column 1 - line 158, column 63): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 159, column 1 - line 159, column 63): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseKH = function(v) {
@@ -31970,7 +31971,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 132, column 1 - line 132, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 133, column 1 - line 133, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQ2 = /* @__PURE__ */ bind19(/* @__PURE__ */ map26(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -31995,7 +31996,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 152, column 1 - line 152, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 153, column 1 - line 153, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK$prime2 = function(v) {
@@ -32023,7 +32024,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 124, column 1 - line 124, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 125, column 1 - line 125, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK2 = /* @__PURE__ */ bind19(/* @__PURE__ */ map26(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32048,7 +32049,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 262, column 1 - line 262, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 263, column 1 - line 263, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseP2 = /* @__PURE__ */ bind19(/* @__PURE__ */ map26(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32073,7 +32074,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 290, column 1 - line 290, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 291, column 1 - line 291, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseTS2 = function(v) {
@@ -32093,7 +32094,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 284, column 1 - line 284, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 285, column 1 - line 285, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseC = /* @__PURE__ */ bind19(/* @__PURE__ */ map26(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32126,7 +32127,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 276, column 1 - line 276, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 277, column 1 - line 277, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseT2 = /* @__PURE__ */ bind19(/* @__PURE__ */ map26(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32146,7 +32147,7 @@
         return new Min2(v1);
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 524, column 1 - line 524, column 25): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 525, column 1 - line 525, column 25): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseGrubbWord$prime = function(ltr) {
@@ -32158,7 +32159,7 @@
       return map26(Cons.create(ltr))(many(parseGrubbLetter));
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 518, column 1 - line 518, column 67): " + [ltr.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 519, column 1 - line 519, column 67): " + [ltr.constructor.name]);
   };
   var parseGrubbWord = /* @__PURE__ */ bind19(parseGrubbLetter)(parseGrubbWord$prime);
   var parseGrubbMain = /* @__PURE__ */ function() {
@@ -32190,7 +32191,7 @@
         return v(v1.value0);
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 417, column 1 - line 417, column 57): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 418, column 1 - line 418, column 57): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseZ3 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32244,7 +32245,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 237, column 1 - line 237, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 238, column 1 - line 238, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseD3 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpper)(/* @__PURE__ */ satisfyCodePoint(/* @__PURE__ */ disj12(/* @__PURE__ */ eqCP("d"))(/* @__PURE__ */ eqCP("D")))))(function(b2) {
@@ -32316,7 +32317,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 185, column 1 - line 185, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 186, column 1 - line 186, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG$prime3 = function(v) {
@@ -32340,7 +32341,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 178, column 1 - line 178, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 179, column 1 - line 179, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG3 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32365,7 +32366,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 127, column 1 - line 127, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 128, column 1 - line 128, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQY = function(v) {
@@ -32385,7 +32386,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 156, column 1 - line 156, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 157, column 1 - line 157, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseXU3 = function(v) {
@@ -32405,7 +32406,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 220, column 1 - line 220, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 221, column 1 - line 221, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseX$prime3 = function(v) {
@@ -32429,7 +32430,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 213, column 1 - line 213, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 214, column 1 - line 214, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseX3 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32476,7 +32477,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 293, column 1 - line 293, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 294, column 1 - line 294, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseC2 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32501,7 +32502,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 343, column 1 - line 343, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 344, column 1 - line 344, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseJ2 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32526,7 +32527,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 133, column 1 - line 133, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 134, column 1 - line 134, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK$prime3 = function(v) {
@@ -32550,7 +32551,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 120, column 1 - line 120, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 121, column 1 - line 121, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK3 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32575,7 +32576,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 356, column 1 - line 356, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 357, column 1 - line 357, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseL2 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32600,7 +32601,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 314, column 1 - line 314, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 315, column 1 - line 315, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseM2 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32625,7 +32626,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 327, column 1 - line 327, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 328, column 1 - line 328, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseN2 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32650,7 +32651,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 267, column 1 - line 267, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 268, column 1 - line 268, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseP3 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32675,7 +32676,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 162, column 1 - line 162, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 163, column 1 - line 163, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQ$prime2 = function(v) {
@@ -32699,7 +32700,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 149, column 1 - line 149, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 150, column 1 - line 150, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQ3 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32724,7 +32725,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 280, column 1 - line 280, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 281, column 1 - line 281, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseT3 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32749,7 +32750,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 400, column 1 - line 400, column 63): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 401, column 1 - line 401, column 63): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseTL3 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32774,7 +32775,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 379, column 1 - line 379, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Island (line 380, column 1 - line 380, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseW2 = /* @__PURE__ */ bind20(/* @__PURE__ */ map28(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32824,7 +32825,7 @@
           return v(v1.value0);
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 410, column 9 - line 410, column 32): " + [v.constructor.name, v1.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 412, column 9 - line 412, column 32): " + [v.constructor.name, v1.constructor.name]);
       };
     };
     return discard(discardUnit)(bindParserT)($$void(functorParserT)($$char("\u0294")))(function() {
@@ -32876,7 +32877,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 222, column 1 - line 222, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 224, column 1 - line 224, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseD4 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32943,7 +32944,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 181, column 1 - line 181, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 183, column 1 - line 183, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG$prime4 = function(v) {
@@ -32967,7 +32968,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 159, column 1 - line 159, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 161, column 1 - line 161, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG4 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -32997,7 +32998,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 100, column 1 - line 100, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 102, column 1 - line 102, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQY2 = function(v) {
@@ -33017,7 +33018,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 135, column 1 - line 135, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 137, column 1 - line 137, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseXU4 = function(v) {
@@ -33037,7 +33038,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 205, column 1 - line 205, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 207, column 1 - line 207, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseX$prime4 = function(v) {
@@ -33061,7 +33062,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 198, column 1 - line 198, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 200, column 1 - line 200, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseX4 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33112,7 +33113,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 282, column 1 - line 282, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 284, column 1 - line 284, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseC3 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33137,7 +33138,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 335, column 1 - line 335, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 337, column 1 - line 337, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseJ3 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33162,7 +33163,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 107, column 1 - line 107, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 109, column 1 - line 109, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK$prime4 = function(v) {
@@ -33186,7 +33187,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 91, column 1 - line 91, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 93, column 1 - line 93, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK4 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33211,7 +33212,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 349, column 1 - line 349, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 351, column 1 - line 351, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseL3 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33236,7 +33237,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 304, column 1 - line 304, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 306, column 1 - line 306, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseM3 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33261,7 +33262,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 318, column 1 - line 318, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 320, column 1 - line 320, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseN3 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33286,7 +33287,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 254, column 1 - line 254, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 256, column 1 - line 256, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseP4 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33311,7 +33312,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 142, column 1 - line 142, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 144, column 1 - line 144, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQ$prime3 = function(v) {
@@ -33335,7 +33336,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 126, column 1 - line 126, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 128, column 1 - line 128, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQ4 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33360,7 +33361,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 268, column 1 - line 268, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 270, column 1 - line 270, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseT4 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33385,7 +33386,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 394, column 1 - line 394, column 63): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 396, column 1 - line 396, column 63): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseTL4 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33410,7 +33411,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 371, column 1 - line 371, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 373, column 1 - line 373, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseW3 = /* @__PURE__ */ bind21(/* @__PURE__ */ map29(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33473,7 +33474,7 @@
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 374, column 1 - line 374, column 53): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 381, column 1 - line 381, column 53): " + [v.constructor.name]);
   };
   var parseWonly2 = /* @__PURE__ */ bind22(/* @__PURE__ */ map30(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "w" || x === "W";
@@ -33504,7 +33505,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 212, column 1 - line 212, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 219, column 1 - line 219, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseS5 = /* @__PURE__ */ function() {
@@ -33573,7 +33574,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 316, column 1 - line 316, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 323, column 1 - line 323, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseD5 = /* @__PURE__ */ bind22(/* @__PURE__ */ satisfy(function(x) {
@@ -33627,7 +33628,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 340, column 1 - line 340, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 347, column 1 - line 347, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var isLabial5 = function(v) {
@@ -33667,7 +33668,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 174, column 1 - line 174, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 181, column 1 - line 181, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG$prime5 = function(v) {
@@ -33691,7 +33692,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 160, column 1 - line 160, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 167, column 1 - line 167, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG5 = /* @__PURE__ */ bind22(/* @__PURE__ */ map30(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33721,7 +33722,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 121, column 1 - line 121, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 128, column 1 - line 128, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQY3 = function(v) {
@@ -33741,7 +33742,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 147, column 1 - line 147, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 154, column 1 - line 154, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseXU5 = function(v) {
@@ -33761,7 +33762,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 347, column 1 - line 347, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 354, column 1 - line 354, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseX$prime5 = function(v) {
@@ -33785,7 +33786,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 333, column 1 - line 333, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 340, column 1 - line 340, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseX5 = /* @__PURE__ */ bind22(/* @__PURE__ */ satisfy(function(x) {
@@ -33844,7 +33845,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 127, column 1 - line 127, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 134, column 1 - line 134, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseP5 = /* @__PURE__ */ bind22(/* @__PURE__ */ map30(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33880,7 +33881,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 141, column 1 - line 141, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 148, column 1 - line 148, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQ5 = function(v) {
@@ -33904,7 +33905,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 134, column 1 - line 134, column 61): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 141, column 1 - line 141, column 61): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK$prime5 = function(v) {
@@ -33932,7 +33933,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 108, column 1 - line 108, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 115, column 1 - line 115, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK5 = /* @__PURE__ */ bind22(/* @__PURE__ */ map30(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -33962,7 +33963,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 225, column 1 - line 225, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 232, column 1 - line 232, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseTS3 = function(v) {
@@ -33982,7 +33983,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 219, column 1 - line 219, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 226, column 1 - line 226, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseT$prime5 = function(v) {
@@ -34010,7 +34011,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 201, column 1 - line 201, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 208, column 1 - line 208, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseT5 = /* @__PURE__ */ bind22(/* @__PURE__ */ map30(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -34031,7 +34032,7 @@
         return new Min2(v1);
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 437, column 1 - line 437, column 48): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 444, column 1 - line 444, column 48): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseUmistaWordX$prime = function(ltr) {
@@ -34043,7 +34044,7 @@
       return map30(Cons.create(ltr))(many(parseUmistaLetterNew));
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 431, column 1 - line 431, column 69): " + [ltr.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 438, column 1 - line 438, column 69): " + [ltr.constructor.name]);
   };
   var parseUmistaWordX = /* @__PURE__ */ bind22(parseUmistaLetterNew)(parseUmistaWordX$prime);
   var parseUmistaMainNew = /* @__PURE__ */ function() {
@@ -34364,10 +34365,42 @@
     });
   };
 
+  // output/Web.DOM.ChildNode/foreign.js
+  function remove(node) {
+    return function() {
+      return node.remove();
+    };
+  }
+
+  // output/Kwakwala.GUI.Loading/index.js
+  var bind24 = /* @__PURE__ */ bind(bindAff);
+  var pure28 = /* @__PURE__ */ pure(applicativeAff);
+  var liftEffect7 = /* @__PURE__ */ liftEffect(monadEffectAff);
+  var removeElement = function(elm) {
+    return bind24(pure28(toChildNode(elm)))(function(cnod) {
+      return liftEffect7(remove(cnod));
+    });
+  };
+  var getLoader = /* @__PURE__ */ selectElement(".loader");
+  var removeLoader = /* @__PURE__ */ bind24(getLoader)(function(mldr) {
+    if (mldr instanceof Nothing) {
+      return pure28(unit);
+    }
+    ;
+    if (mldr instanceof Just) {
+      return removeElement(mldr.value0);
+    }
+    ;
+    throw new Error("Failed pattern match at Kwakwala.GUI.Loading (line 32, column 3 - line 34, column 36): " + [mldr.constructor.name]);
+  });
+
   // output/Main/index.js
+  var discard13 = /* @__PURE__ */ discard(discardUnit)(bindAff);
   var convertComp2 = /* @__PURE__ */ convertComp(monadAffAff);
   var main2 = /* @__PURE__ */ runHalogenAff(/* @__PURE__ */ bind(bindAff)(awaitBody)(function(body2) {
-    return runUI2(convertComp2)(new ConvertText(""))(body2);
+    return discard13(removeLoader)(function() {
+      return runUI2(convertComp2)(new ConvertText(""))(body2);
+    });
   }));
 
   // <stdin>
