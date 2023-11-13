@@ -10398,6 +10398,11 @@
     InBoas2.value = new InBoas2();
     return InBoas2;
   }();
+  var tooltiptextC = "tooltiptext";
+  var toolbelowFC = "tooltip toolbelow toolfirst";
+  var toolbelowC = "tooltip toolbelow";
+  var toolaboveFC = "tooltip toolabove toolfirst";
+  var toolaboveC = "tooltip toolabove";
   var eqKwakOutType = {
     eq: function(x) {
       return function(y) {
@@ -10456,6 +10461,8 @@
     grubbOrthOptions: defGrubbOptions,
     ipaOrthOptions: defIPAOptions
   };
+  var containerC = "container";
+  var checkboxC = "checkbox";
 
   // output/Kwakwala.GUI.Components.InSelect/index.js
   var type_19 = /* @__PURE__ */ type_17(isPropInputType);
@@ -10469,15 +10476,15 @@
   var radioButtonsI = function(kwk) {
     return div2([class_("radio-in")])([input([type_19(InputRadio.value), id2("grubb-in"), name15("RInput"), value13("uh1"), onClick(function(v) {
       return InGrubb.value;
-    }), checked2(eq3(kwk)(InGrubb.value))]), label4([$$for("grubb-in")])([text5("Grubb")]), input([type_19(InputRadio.value), id2("umista-in"), name15("RInput"), value13("uh2"), onClick(function(v) {
+    }), checked2(eq3(kwk)(InGrubb.value))]), label4([$$for("grubb-in"), class_(toolaboveFC)])([text5("Grubb"), span3([class_(tooltiptextC)])([text5("ASCII-compatible orthography for simple applications.")])]), input([type_19(InputRadio.value), id2("umista-in"), name15("RInput"), value13("uh2"), onClick(function(v) {
       return InUmista.value;
-    }), checked2(eq3(kwk)(InUmista.value))]), label4([$$for("umista-in")])([text5("Umista")]), input([type_19(InputRadio.value), id2("napa-in"), name15("RInput"), value13("uh3"), onClick(function(v) {
+    }), checked2(eq3(kwk)(InUmista.value))]), label4([$$for("umista-in"), class_(toolaboveC)])([text5("Umista"), span3([class_(tooltiptextC)])([text5("Common Orthography generally used further north.")])]), input([type_19(InputRadio.value), id2("napa-in"), name15("RInput"), value13("uh3"), onClick(function(v) {
       return InNapa.value;
-    }), checked2(eq3(kwk)(InNapa.value))]), label4([$$for("napa-in")])([text5("NAPA")]), input([type_19(InputRadio.value), id2("boas-in"), name15("RInput"), value13("uh4"), onClick(function(v) {
+    }), checked2(eq3(kwk)(InNapa.value))]), label4([$$for("napa-in"), class_(toolaboveC)])([text5("NAPA"), span3([class_(tooltiptextC)])([text5("Orthography based on the North American Phonetic Alphabet. Generally used further South.")])]), input([type_19(InputRadio.value), id2("boas-in"), name15("RInput"), value13("uh4"), onClick(function(v) {
       return InBoas.value;
-    }), checked2(eq3(kwk)(InBoas.value))]), label4([$$for("boas-in")])([text5("Boas")]), input([type_19(InputRadio.value), id2("island-in"), name15("RInput"), value13("uh5"), onClick(function(v) {
+    }), checked2(eq3(kwk)(InBoas.value))]), label4([$$for("boas-in"), class_(toolaboveC)])([text5("Boas"), span3([class_(tooltiptextC)])([text5("Orthography used by Franz Boas and related anthropologists.")])]), input([type_19(InputRadio.value), id2("island-in"), name15("RInput"), value13("uh5"), onClick(function(v) {
       return InIsland.value;
-    }), checked2(eq3(kwk)(InIsland.value))]), label4([$$for("island-in")])([text5("Island")])]);
+    }), checked2(eq3(kwk)(InIsland.value))]), label4([$$for("island-in"), class_(toolaboveC)])([text5("Island"), span3([class_(tooltiptextC)])([text5("Variant of NAPA that uses the specific 'Island' Font.")])])]);
   };
   var handleOrthInQuery = function(dictMonad) {
     return function(v) {
@@ -10912,7 +10919,7 @@
         };
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.GUI.Components.GrubbOptions (line 103, column 1 - line 103, column 59): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.GUI.Components.GrubbOptions (line 106, column 1 - line 106, column 59): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var handleGrubbQuery = function(v) {
@@ -10926,11 +10933,11 @@
     });
   };
   var grubbOptionsGUI = function(grb) {
-    return div2([class_("orth-options")])([p_([label4([$$for("grubb-j"), class_("orth-span")])([input([type_23(InputCheckbox.value), id2("grubb-j"), name15("CGrubb"), value15("grb1"), onClick(function(v) {
+    return div2([class_("orth-options")])([p_([label4([$$for("grubb-j"), class_("orth-span")])([input([type_23(InputCheckbox.value), id2("grubb-j"), name15("CGrubb"), class_(checkboxC), value15("grb1"), onClick(function(v) {
       return GrbTogJ.value;
-    }), checked2(grb.grbUseJ)]), text5("Use J for /h/")])]), p_([label4([$$for("grubb-e"), class_("orth-span")])([input([type_23(InputCheckbox.value), id2("grubb-e"), name15("CGrubb"), value15("grb2"), onClick(function(v) {
+    }), checked2(grb.grbUseJ)]), text5("Use J for /h/")])]), p_([label4([$$for("grubb-e"), class_("orth-span")])([input([type_23(InputCheckbox.value), id2("grubb-e"), name15("CGrubb"), class_(checkboxC), value15("grb2"), onClick(function(v) {
       return GrbTog$prime.value;
-    }), checked2(grb["grbUse'"])]), text5("Include apostrophes at word start")])]), p_([label4([$$for("grubb-7")])([input([type_23(InputCheckbox.value), id2("grubb-7"), name15("CGrubb"), value15("grb3"), onClick(function(v) {
+    }), checked2(grb["grbUse'"])]), text5("Include apostrophes at word start")])]), p_([label4([$$for("grubb-7")])([input([type_23(InputCheckbox.value), id2("grubb-7"), name15("CGrubb"), class_(checkboxC), value15("grb3"), onClick(function(v) {
       return GrbTog7.value;
     }), checked2(grb.grbUse7)]), text5("Replace apostrophes with 7s")])])]);
   };
@@ -11002,7 +11009,7 @@
         };
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.GUI.Components.IPAOptions (line 92, column 1 - line 92, column 51): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.GUI.Components.IPAOptions (line 97, column 1 - line 97, column 51): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var handleIPAQuery = function(v) {
@@ -11016,11 +11023,11 @@
     });
   };
   var grubbOptionsGUI2 = function(ops) {
-    return div2([class_("orth-options")])([p_([span3([class_("orth-span")])([label4([$$for("ipa-tie")])([input([type_24(InputCheckbox.value), id2("ipa-tie"), name15("CIPA"), value16("ipa1"), onClick(function(v) {
+    return div2([class_("orth-options")])([p_([span3([class_("orth-span")])([label4([$$for("ipa-tie"), class_(containerC)])([input([type_24(InputCheckbox.value), id2("ipa-tie"), name15("CIPA"), value16("ipa1"), onClick(function(v) {
       return IpaTogTie.value;
-    }), checked2(ops.ipaUseTies)]), text5("Include ties in the middle of affricates")])])]), p_([span3([class_("orth-span")])([label4([$$for("ipa-pal")])([input([type_24(InputCheckbox.value), id2("ipa-pal"), name15("CIPA"), value16("ipa2"), onClick(function(v) {
+    }), checked2(ops.ipaUseTies)]), span3([class_(checkboxC)])([]), text5("Include ties in the middle of affricates")])])]), p_([span3([class_("orth-span")])([label4([$$for("ipa-pal"), class_(containerC)])([input([type_24(InputCheckbox.value), id2("ipa-pal"), name15("CIPA"), value16("ipa2"), onClick(function(v) {
       return IpaTogPal.value;
-    }), checked2(ops.ipaShowPal)]), text5("Include palatalisation marks for velar consonants")])])])]);
+    }), checked2(ops.ipaShowPal)]), span3([class_(checkboxC)])([]), text5("Include palatalisation marks for velar consonants")])])])]);
   };
   var ipaComp = function(dictMonadEffect) {
     return mkComponent({
@@ -11237,15 +11244,15 @@
   var radioButtonsO = function(kwk) {
     return div2([class_("radio-in")])([input([type_25(InputRadio.value), id2("grubb-out"), name15("ROutput"), value17("guh1"), onClick(function(v) {
       return OutGrubb.value;
-    }), checked2(eq4(kwk)(OutGrubb.value))]), label4([$$for("grubb-out")])([text5("Grubb")]), input([type_25(InputRadio.value), id2("umista-out"), name15("ROutput"), value17("guh2"), onClick(function(v) {
+    }), checked2(eq4(kwk)(OutGrubb.value))]), label4([$$for("grubb-out"), class_(toolbelowFC)])([text5("Grubb"), span3([class_(tooltiptextC)])([text5("ASCII-compatible orthography for simple applications.")])]), input([type_25(InputRadio.value), id2("umista-out"), name15("ROutput"), value17("guh2"), onClick(function(v) {
       return OutUmista.value;
-    }), checked2(eq4(kwk)(OutUmista.value))]), label4([$$for("umista-out")])([text5("Umista")]), input([type_25(InputRadio.value), id2("napa-out"), name15("ROutput"), value17("guh3"), onClick(function(v) {
+    }), checked2(eq4(kwk)(OutUmista.value))]), label4([$$for("umista-out"), class_(toolbelowC)])([text5("Umista"), span3([class_(tooltiptextC)])([text5("Common Orthography generally used further north.")])]), input([type_25(InputRadio.value), id2("napa-out"), name15("ROutput"), value17("guh3"), onClick(function(v) {
       return OutNapa.value;
-    }), checked2(eq4(kwk)(OutNapa.value))]), label4([$$for("napa-out")])([text5("NAPA")]), input([type_25(InputRadio.value), id2("ipa-out"), name15("ROutput"), value17("guh4"), onClick(function(v) {
+    }), checked2(eq4(kwk)(OutNapa.value))]), label4([$$for("napa-out"), class_(toolbelowC)])([text5("NAPA"), span3([class_(tooltiptextC)])([text5("Orthography based on the North American Phonetic Alphabet. Generally used further South.")])]), input([type_25(InputRadio.value), id2("ipa-out"), name15("ROutput"), value17("guh4"), onClick(function(v) {
       return OutIPA.value;
-    }), checked2(eq4(kwk)(OutIPA.value))]), label4([$$for("ipa-out")])([text5("IPA")]), input([type_25(InputRadio.value), id2("syll-out"), name15("ROutput"), value17("guh5"), onClick(function(v) {
+    }), checked2(eq4(kwk)(OutIPA.value))]), label4([$$for("ipa-out"), class_(toolbelowC)])([text5("IPA"), span3([class_(tooltiptextC)])([text5("Standard IPA Orthography. If this isn't what you expected, try NAPA instead.")])]), input([type_25(InputRadio.value), id2("syll-out"), name15("ROutput"), value17("guh5"), onClick(function(v) {
       return OutSyllabic.value;
-    }), checked2(eq4(kwk)(OutSyllabic.value))]), label4([$$for("syll-out")])([text5("Syllabic (Carrier)")])]);
+    }), checked2(eq4(kwk)(OutSyllabic.value))]), label4([$$for("syll-out"), class_(toolbelowC)])([text5("Syllabic (Carrier)"), span3([class_(tooltiptextC)])([text5("Experimental syllabic orthography. Based on CAS in general, and Carrier in specific.")])])]);
   };
   var handleOrthOutQuery = function(dictMonad) {
     return function(v) {
