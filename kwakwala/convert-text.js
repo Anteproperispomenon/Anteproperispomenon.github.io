@@ -131,20 +131,20 @@
   };
   var applySecond = function(dictApply) {
     var apply1 = apply(dictApply);
-    var map38 = map(dictApply.Functor0());
+    var map39 = map(dictApply.Functor0());
     return function(a2) {
       return function(b2) {
-        return apply1(map38($$const(identity2))(a2))(b2);
+        return apply1(map39($$const(identity2))(a2))(b2);
       };
     };
   };
   var lift2 = function(dictApply) {
     var apply1 = apply(dictApply);
-    var map38 = map(dictApply.Functor0());
+    var map39 = map(dictApply.Functor0());
     return function(f) {
       return function(a2) {
         return function(b2) {
-          return apply1(map38(f)(a2))(b2);
+          return apply1(map39(f)(a2))(b2);
         };
       };
     };
@@ -1144,24 +1144,24 @@
 
   // output/Control.Monad/index.js
   var unlessM = function(dictMonad) {
-    var bind27 = bind(dictMonad.Bind1());
+    var bind28 = bind(dictMonad.Bind1());
     var unless2 = unless(dictMonad.Applicative0());
     return function(mb) {
       return function(m) {
-        return bind27(mb)(function(b2) {
+        return bind28(mb)(function(b2) {
           return unless2(b2)(m);
         });
       };
     };
   };
   var ap = function(dictMonad) {
-    var bind27 = bind(dictMonad.Bind1());
-    var pure31 = pure(dictMonad.Applicative0());
+    var bind28 = bind(dictMonad.Bind1());
+    var pure32 = pure(dictMonad.Applicative0());
     return function(f) {
       return function(a2) {
-        return bind27(f)(function(f$prime) {
-          return bind27(a2)(function(a$prime) {
-            return pure31(f$prime(a$prime));
+        return bind28(f)(function(f$prime) {
+          return bind28(a2)(function(a$prime) {
+            return pure32(f$prime(a$prime));
           });
         });
       };
@@ -1394,6 +1394,19 @@
   }();
   var compare = function(dict) {
     return dict.compare;
+  };
+  var lessThan = function(dictOrd) {
+    var compare3 = compare(dictOrd);
+    return function(a1) {
+      return function(a2) {
+        var v = compare3(a1)(a2);
+        if (v instanceof LT) {
+          return true;
+        }
+        ;
+        return false;
+      };
+    };
   };
   var lessThanOrEq = function(dictOrd) {
     var compare3 = compare(dictOrd);
@@ -1886,11 +1899,11 @@
   var $$try = function(dictMonadError) {
     var catchError1 = catchError(dictMonadError);
     var Monad0 = dictMonadError.MonadThrow0().Monad0();
-    var map38 = map(Monad0.Bind1().Apply0().Functor0());
-    var pure31 = pure(Monad0.Applicative0());
+    var map39 = map(Monad0.Bind1().Apply0().Functor0());
+    var pure32 = pure(Monad0.Applicative0());
     return function(a2) {
-      return catchError1(map38(Right.create)(a2))(function($52) {
-        return pure31(Left.create($52));
+      return catchError1(map39(Right.create)(a2))(function($52) {
+        return pure32(Left.create($52));
       });
     };
   };
@@ -2368,13 +2381,13 @@
     };
   };
   var bindExceptT = function(dictMonad) {
-    var bind27 = bind(dictMonad.Bind1());
-    var pure31 = pure(dictMonad.Applicative0());
+    var bind28 = bind(dictMonad.Bind1());
+    var pure32 = pure(dictMonad.Applicative0());
     return {
       bind: function(v) {
         return function(k) {
-          return bind27(v)(either(function($187) {
-            return pure31(Left.create($187));
+          return bind28(v)(either(function($187) {
+            return pure32(Left.create($187));
           })(function(a2) {
             var v1 = k(a2);
             return v1;
@@ -2485,14 +2498,14 @@
     return dict.foldr;
   };
   var traverse_ = function(dictApplicative) {
-    var applySecond8 = applySecond(dictApplicative.Apply0());
-    var pure31 = pure(dictApplicative);
+    var applySecond9 = applySecond(dictApplicative.Apply0());
+    var pure32 = pure(dictApplicative);
     return function(dictFoldable) {
       var foldr22 = foldr(dictFoldable);
       return function(f) {
         return foldr22(function($454) {
-          return applySecond8(f($454));
-        })(pure31(unit));
+          return applySecond9(f($454));
+        })(pure32(unit));
       };
     };
   };
@@ -2639,23 +2652,23 @@
       };
     }
     return function(apply3) {
-      return function(map38) {
-        return function(pure31) {
+      return function(map39) {
+        return function(pure32) {
           return function(f) {
             return function(array) {
               function go2(bot, top3) {
                 switch (top3 - bot) {
                   case 0:
-                    return pure31([]);
+                    return pure32([]);
                   case 1:
-                    return map38(array1)(f(array[bot]));
+                    return map39(array1)(f(array[bot]));
                   case 2:
-                    return apply3(map38(array2)(f(array[bot])))(f(array[bot + 1]));
+                    return apply3(map39(array2)(f(array[bot])))(f(array[bot + 1]));
                   case 3:
-                    return apply3(apply3(map38(array3)(f(array[bot])))(f(array[bot + 1])))(f(array[bot + 2]));
+                    return apply3(apply3(map39(array3)(f(array[bot])))(f(array[bot + 1])))(f(array[bot + 2]));
                   default:
                     var pivot = bot + Math.floor((top3 - bot) / 4) * 2;
-                    return apply3(map38(concat22)(go2(bot, pivot)))(go2(pivot, top3));
+                    return apply3(map39(concat22)(go2(bot, pivot)))(go2(pivot, top3));
                 }
               }
               return go2(0, array.length);
@@ -2992,24 +3005,24 @@
   // output/Control.Monad.State.Trans/index.js
   var monadTransStateT = {
     lift: function(dictMonad) {
-      var bind27 = bind(dictMonad.Bind1());
-      var pure31 = pure(dictMonad.Applicative0());
+      var bind28 = bind(dictMonad.Bind1());
+      var pure32 = pure(dictMonad.Applicative0());
       return function(m) {
         return function(s) {
-          return bind27(m)(function(x) {
-            return pure31(new Tuple(x, s));
+          return bind28(m)(function(x) {
+            return pure32(new Tuple(x, s));
           });
         };
       };
     }
   };
   var functorStateT = function(dictFunctor) {
-    var map38 = map(dictFunctor);
+    var map39 = map(dictFunctor);
     return {
       map: function(f) {
         return function(v) {
           return function(s) {
-            return map38(function(v1) {
+            return map39(function(v1) {
               return new Tuple(f(v1.value0), v1.value1);
             })(v(s));
           };
@@ -3018,10 +3031,10 @@
     };
   };
   var evalStateT = function(dictFunctor) {
-    var map38 = map(dictFunctor);
+    var map39 = map(dictFunctor);
     return function(v) {
       return function(s) {
-        return map38(fst)(v(s));
+        return map39(fst)(v(s));
       };
     };
   };
@@ -3036,12 +3049,12 @@
     };
   };
   var bindStateT = function(dictMonad) {
-    var bind27 = bind(dictMonad.Bind1());
+    var bind28 = bind(dictMonad.Bind1());
     return {
       bind: function(v) {
         return function(f) {
           return function(s) {
-            return bind27(v(s))(function(v1) {
+            return bind28(v(s))(function(v1) {
               var v3 = f(v1.value0);
               return v3(v1.value1);
             });
@@ -3063,11 +3076,11 @@
     };
   };
   var applicativeStateT = function(dictMonad) {
-    var pure31 = pure(dictMonad.Applicative0());
+    var pure32 = pure(dictMonad.Applicative0());
     return {
       pure: function(a2) {
         return function(s) {
-          return pure31(new Tuple(a2, s));
+          return pure32(new Tuple(a2, s));
         };
       },
       Apply0: function() {
@@ -3077,8 +3090,8 @@
   };
   var monadRecStateT = function(dictMonadRec) {
     var Monad0 = dictMonadRec.Monad0();
-    var bind27 = bind(Monad0.Bind1());
-    var pure31 = pure(Monad0.Applicative0());
+    var bind28 = bind(Monad0.Bind1());
+    var pure32 = pure(Monad0.Applicative0());
     var tailRecM4 = tailRecM(dictMonadRec);
     var monadStateT1 = monadStateT(Monad0);
     return {
@@ -3086,8 +3099,8 @@
         return function(a2) {
           var f$prime = function(v) {
             var v1 = f(v.value0);
-            return bind27(v1(v.value1))(function(v2) {
-              return pure31(function() {
+            return bind28(v1(v.value1))(function(v2) {
+              return pure32(function() {
                 if (v2.value0 instanceof Loop) {
                   return new Loop(new Tuple(v2.value0.value0, v2.value1));
                 }
@@ -3111,12 +3124,12 @@
     };
   };
   var monadStateStateT = function(dictMonad) {
-    var pure31 = pure(dictMonad.Applicative0());
+    var pure32 = pure(dictMonad.Applicative0());
     var monadStateT1 = monadStateT(dictMonad);
     return {
       state: function(f) {
         return function($200) {
-          return pure31(f($200));
+          return pure32(f($200));
         };
       },
       Monad0: function() {
@@ -3126,13 +3139,13 @@
   };
   var altStateT = function(dictMonad) {
     return function(dictAlt) {
-      var alt14 = alt(dictAlt);
+      var alt15 = alt(dictAlt);
       var functorStateT1 = functorStateT(dictAlt.Functor0());
       return {
         alt: function(v) {
           return function(v1) {
             return function(s) {
-              return alt14(v(s))(v1(s));
+              return alt15(v(s))(v1(s));
             };
           };
         },
@@ -3585,6 +3598,36 @@
       return new NonEmpty(a2, empty8);
     };
   };
+  var foldableNonEmpty = function(dictFoldable) {
+    var foldMap7 = foldMap(dictFoldable);
+    var foldl4 = foldl(dictFoldable);
+    var foldr5 = foldr(dictFoldable);
+    return {
+      foldMap: function(dictMonoid) {
+        var append12 = append(dictMonoid.Semigroup0());
+        var foldMap12 = foldMap7(dictMonoid);
+        return function(f) {
+          return function(v) {
+            return append12(f(v.value0))(foldMap12(f)(v.value1));
+          };
+        };
+      },
+      foldl: function(f) {
+        return function(b2) {
+          return function(v) {
+            return foldl4(f)(f(b2)(v.value0))(v.value1);
+          };
+        };
+      },
+      foldr: function(f) {
+        return function(b2) {
+          return function(v) {
+            return f(v.value0)(foldr5(f)(b2)(v.value1));
+          };
+        };
+      }
+    };
+  };
 
   // output/Data.List.Types/index.js
   var identity6 = /* @__PURE__ */ identity(categoryFn);
@@ -3762,6 +3805,7 @@
   };
   var foldl2 = /* @__PURE__ */ foldl(foldableList);
   var foldr2 = /* @__PURE__ */ foldr(foldableList);
+  var foldableNonEmptyList = /* @__PURE__ */ foldableNonEmpty(foldableList);
   var semigroupList = {
     append: function(xs) {
       return function(ys) {
@@ -3922,13 +3966,13 @@
     var tailRecM4 = tailRecM(dictMonadRec);
     return function(dictAlternative) {
       var Alt0 = dictAlternative.Plus1().Alt0();
-      var alt14 = alt(Alt0);
+      var alt15 = alt(Alt0);
       var map116 = map(Alt0.Functor0());
-      var pure31 = pure(dictAlternative.Applicative0());
+      var pure32 = pure(dictAlternative.Applicative0());
       return function(p2) {
         var go2 = function(acc) {
-          return bind111(alt14(map116(Loop.create)(p2))(pure31(new Done(unit))))(function(aa) {
-            return pure31(bimap2(function(v) {
+          return bind111(alt15(map116(Loop.create)(p2))(pure32(new Done(unit))))(function(aa) {
+            return pure32(bimap2(function(v) {
               return new Cons(v, acc);
             })(function(v) {
               return reverse(acc);
@@ -6301,7 +6345,7 @@
     return Lift.create;
   }();
   var goLeft = function(dictApplicative) {
-    var pure31 = pure(dictApplicative);
+    var pure32 = pure(dictApplicative);
     return function(fStack) {
       return function(valStack) {
         return function(nat) {
@@ -6309,7 +6353,7 @@
             return function(count) {
               if (func instanceof Pure) {
                 return new Tuple(new Cons({
-                  func: pure31(func.value0),
+                  func: pure32(func.value0),
                   count
                 }, fStack), valStack);
               }
@@ -6380,7 +6424,7 @@
   };
   var foldFreeAp = function(dictApplicative) {
     var goApply1 = goApply(dictApplicative);
-    var pure31 = pure(dictApplicative);
+    var pure32 = pure(dictApplicative);
     var goLeft1 = goLeft(dictApplicative);
     return function(nat) {
       return function(z) {
@@ -6389,7 +6433,7 @@
           var $tco_result;
           function $tco_loop(v) {
             if (v.value1.value0 instanceof Pure) {
-              var v1 = goApply1(v.value0)(v.value1.value1)(pure31(v.value1.value0.value0));
+              var v1 = goApply1(v.value0)(v.value1.value1)(pure32(v.value1.value0.value0));
               if (v1 instanceof Left) {
                 $tco_done = true;
                 return v1.value0;
@@ -8361,10 +8405,10 @@
   // output/Foreign.Index/index.js
   var unsafeReadProp = function(dictMonad) {
     var fail3 = fail(dictMonad);
-    var pure31 = pure(applicativeExceptT(dictMonad));
+    var pure32 = pure(applicativeExceptT(dictMonad));
     return function(k) {
       return function(value19) {
-        return unsafeReadPropImpl(fail3(new TypeMismatch("object", typeOf(value19))), pure31, k, value19);
+        return unsafeReadPropImpl(fail3(new TypeMismatch("object", typeOf(value19))), pure32, k, value19);
       };
     };
   };
@@ -11146,6 +11190,13 @@
     InArabic2.value = new InArabic2();
     return InArabic2;
   }();
+  var InSyllabic = /* @__PURE__ */ function() {
+    function InSyllabic2() {
+    }
+    ;
+    InSyllabic2.value = new InSyllabic2();
+    return InSyllabic2;
+  }();
   var ConvertReady = /* @__PURE__ */ function() {
     function ConvertReady2() {
     }
@@ -11237,6 +11288,10 @@
           return true;
         }
         ;
+        if (x instanceof InSyllabic && y instanceof InSyllabic) {
+          return true;
+        }
+        ;
         return false;
       };
     }
@@ -11286,7 +11341,7 @@
       return "cvb convert-error";
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.GUI.Types (line 121, column 1 - line 121, column 43): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.GUI.Types (line 123, column 1 - line 123, column 43): " + [v.constructor.name]);
   };
   var containerC = "container";
   var checkboxC = "checkbox";
@@ -11311,7 +11366,9 @@
       return InBoas.value;
     }), checked2(eq6(kwk)(InBoas.value))]), label4([$$for("boas-in"), class_(toolaboveC)])([text5("Boas"), span3([class_(tooltiptextC)])([text5("Orthography used by Franz Boas and related anthropologists.")])]), input([type_19(InputRadio.value), id2("island-in"), name15("RInput"), value13("uh5"), onClick(function(v) {
       return InIsland.value;
-    }), checked2(eq6(kwk)(InIsland.value))]), label4([$$for("island-in"), class_(toolaboveC)])([text5("Island"), span3([class_(tooltiptextC)])([text5("Variant of NAPA that uses the specific 'Island' Font.")])]), input([type_19(InputRadio.value), id2("arabic-in"), name15("RInput"), value13("uh6"), onClick(function(v) {
+    }), checked2(eq6(kwk)(InIsland.value))]), label4([$$for("island-in"), class_(toolaboveC)])([text5("Island"), span3([class_(tooltiptextC)])([text5("Variant of NAPA that uses the specific 'Island' Font.")])]), input([type_19(InputRadio.value), id2("syll-in"), name15("ROutput"), value13("uh6"), onClick(function(v) {
+      return InSyllabic.value;
+    }), checked2(eq6(kwk)(InSyllabic.value))]), label4([$$for("syll-in"), class_(toolaboveC)])([text5("Syllabic (Carrier)"), span3([class_(tooltiptextC)])([text5("Experimental syllabic orthography. Based on CAS in general, and Carrier in specific.")])]), input([type_19(InputRadio.value), id2("arabic-in"), name15("RInput"), value13("uh7"), onClick(function(v) {
       return InArabic.value;
     }), checked2(eq6(kwk)(InArabic.value))]), label4([$$for("arabic-in"), class_(toolaboveC)])([text5("Arabic"), span3([class_(tooltiptextC)])([text5("Experimental orthography loosely based on various Arabic scripts.")])])]);
   };
@@ -14514,7 +14571,7 @@
     }
     ;
     if (kwc instanceof XWc) {
-      return "\u1425";
+      return "\u1425\u1424";
     }
     ;
     if (kwc instanceof XUc) {
@@ -14522,7 +14579,7 @@
     }
     ;
     if (kwc instanceof XUWc) {
-      return "\u1426";
+      return "\u1426\u1424";
     }
     ;
     if (kwc instanceof Wc) {
@@ -15097,7 +15154,7 @@
   };
   var runParserT$prime = function(dictMonadRec) {
     var Monad0 = dictMonadRec.Monad0();
-    var map38 = map(Monad0.Bind1().Apply0().Functor0());
+    var map39 = map(Monad0.Bind1().Apply0().Functor0());
     var pure111 = pure(Monad0.Applicative0());
     var tailRecM4 = tailRecM(dictMonadRec);
     return function(state1) {
@@ -15114,7 +15171,7 @@
             ;
             if (v1 instanceof Lift3) {
               $tco_done = true;
-              return map38(Loop.create)(v1.value0);
+              return map39(Loop.create)(v1.value0);
             }
             ;
             if (v1 instanceof Stop) {
@@ -15150,12 +15207,12 @@
     column: 1
   };
   var runParserT = function(dictMonadRec) {
-    var map38 = map(dictMonadRec.Monad0().Bind1().Apply0().Functor0());
+    var map39 = map(dictMonadRec.Monad0().Bind1().Apply0().Functor0());
     var runParserT$prime1 = runParserT$prime(dictMonadRec);
     return function(s) {
       return function(p2) {
         var initialState = new ParseState(s, initialPos, false);
-        return map38(fst)(runParserT$prime1(initialState)(p2));
+        return map39(fst)(runParserT$prime1(initialState)(p2));
       };
     };
   };
@@ -31677,9 +31734,9 @@
       }
       return arr;
     }
-    return function(apply3, map38, f) {
+    return function(apply3, map39, f) {
       var buildFrom = function(x, ys) {
-        return apply3(map38(consList)(f(x)))(ys);
+        return apply3(map39(consList)(f(x)))(ys);
       };
       var go2 = function(acc, currentLen, xs) {
         if (currentLen === 0) {
@@ -31693,12 +31750,12 @@
         }
       };
       return function(array) {
-        var acc = map38(finalCell)(f(array[array.length - 1]));
+        var acc = map39(finalCell)(f(array[array.length - 1]));
         var result2 = go2(acc, array.length - 1, array);
         while (result2 instanceof Cont) {
           result2 = result2.fn();
         }
-        return map38(listToArray)(result2);
+        return map39(listToArray)(result2);
       };
     };
   }();
@@ -32677,10 +32734,10 @@
     return function(dictApplicative) {
       var parTraverse1 = parTraverse2(dictApplicative)(traversableList);
       return function(dictApplicative1) {
-        var pure31 = pure(dictApplicative1);
+        var pure32 = pure(dictApplicative1);
         return function(lsts) {
           return parTraverse1(function(cws) {
-            return pure31(outputUmistaWords(cws));
+            return pure32(outputUmistaWords(cws));
           })(lsts);
         };
       };
@@ -32691,10 +32748,10 @@
     return function(dictApplicative) {
       var outputUmistaWordsPar2 = outputUmistaWordsPar1(dictApplicative);
       return function(dictApplicative1) {
-        var map38 = map(dictApplicative1.Apply0().Functor0());
+        var map39 = map(dictApplicative1.Apply0().Functor0());
         var outputUmistaWordsPar3 = outputUmistaWordsPar2(dictApplicative1);
         return function(lsts) {
-          return map38(fold3)(outputUmistaWordsPar3(lsts));
+          return map39(fold3)(outputUmistaWordsPar3(lsts));
         };
       };
     };
@@ -32704,10 +32761,10 @@
     return function(dictApplicative) {
       var parTraverse1 = parTraverse2(dictApplicative)(traversableList);
       return function(dictApplicative1) {
-        var pure31 = pure(dictApplicative1);
+        var pure32 = pure(dictApplicative1);
         return function(lsts) {
           return parTraverse1(function(cws) {
-            return pure31(outputSyllabicsWords(cws));
+            return pure32(outputSyllabicsWords(cws));
           })(lsts);
         };
       };
@@ -32718,10 +32775,10 @@
     return function(dictApplicative) {
       var outputSyllabicsWordsPar2 = outputSyllabicsWordsPar1(dictApplicative);
       return function(dictApplicative1) {
-        var map38 = map(dictApplicative1.Apply0().Functor0());
+        var map39 = map(dictApplicative1.Apply0().Functor0());
         var outputSyllabicsWordsPar3 = outputSyllabicsWordsPar2(dictApplicative1);
         return function(lsts) {
-          return map38(fold3)(outputSyllabicsWordsPar3(lsts));
+          return map39(fold3)(outputSyllabicsWordsPar3(lsts));
         };
       };
     };
@@ -32731,10 +32788,10 @@
     return function(dictApplicative) {
       var parTraverse1 = parTraverse2(dictApplicative)(traversableList);
       return function(dictApplicative1) {
-        var pure31 = pure(dictApplicative1);
+        var pure32 = pure(dictApplicative1);
         return function(lsts) {
           return parTraverse1(function(cws) {
-            return pure31(outputNapaWords(cws));
+            return pure32(outputNapaWords(cws));
           })(lsts);
         };
       };
@@ -32745,10 +32802,10 @@
     return function(dictApplicative) {
       var outputNapaWordsPar2 = outputNapaWordsPar1(dictApplicative);
       return function(dictApplicative1) {
-        var map38 = map(dictApplicative1.Apply0().Functor0());
+        var map39 = map(dictApplicative1.Apply0().Functor0());
         var outputNapaWordsPar3 = outputNapaWordsPar2(dictApplicative1);
         return function(lsts) {
-          return map38(fold3)(outputNapaWordsPar3(lsts));
+          return map39(fold3)(outputNapaWordsPar3(lsts));
         };
       };
     };
@@ -32758,11 +32815,11 @@
     return function(dictApplicative) {
       var parTraverse1 = parTraverse2(dictApplicative)(traversableList);
       return function(dictApplicative1) {
-        var pure31 = pure(dictApplicative1);
+        var pure32 = pure(dictApplicative1);
         return function(ops) {
           return function(lsts) {
             return parTraverse1(function(cws) {
-              return pure31(outputIPAWords(ops)(cws));
+              return pure32(outputIPAWords(ops)(cws));
             })(lsts);
           };
         };
@@ -32774,11 +32831,11 @@
     return function(dictApplicative) {
       var outputIPAWordsPar2 = outputIPAWordsPar1(dictApplicative);
       return function(dictApplicative1) {
-        var map38 = map(dictApplicative1.Apply0().Functor0());
+        var map39 = map(dictApplicative1.Apply0().Functor0());
         var outputIPAWordsPar3 = outputIPAWordsPar2(dictApplicative1);
         return function(ops) {
           return function(lsts) {
-            return map38(fold3)(outputIPAWordsPar3(ops)(lsts));
+            return map39(fold3)(outputIPAWordsPar3(ops)(lsts));
           };
         };
       };
@@ -32789,11 +32846,11 @@
     return function(dictApplicative) {
       var parTraverse1 = parTraverse2(dictApplicative)(traversableList);
       return function(dictApplicative1) {
-        var pure31 = pure(dictApplicative1);
+        var pure32 = pure(dictApplicative1);
         return function(grb) {
           return function(lsts) {
             return parTraverse1(function(cws) {
-              return pure31(outputGrubbAsciiWords(grb)(cws));
+              return pure32(outputGrubbAsciiWords(grb)(cws));
             })(lsts);
           };
         };
@@ -32805,11 +32862,11 @@
     return function(dictApplicative) {
       var outputGrubbWordsPar2 = outputGrubbWordsPar1(dictApplicative);
       return function(dictApplicative1) {
-        var map38 = map(dictApplicative1.Apply0().Functor0());
+        var map39 = map(dictApplicative1.Apply0().Functor0());
         var outputGrubbWordsPar3 = outputGrubbWordsPar2(dictApplicative1);
         return function(grb) {
           return function(lsts) {
-            return map38(fold3)(outputGrubbWordsPar3(grb)(lsts));
+            return map39(fold3)(outputGrubbWordsPar3(grb)(lsts));
           };
         };
       };
@@ -32820,11 +32877,11 @@
     return function(dictApplicative) {
       var parTraverse1 = parTraverse2(dictApplicative)(traversableList);
       return function(dictApplicative1) {
-        var pure31 = pure(dictApplicative1);
+        var pure32 = pure(dictApplicative1);
         return function(ops) {
           return function(lsts) {
             return parTraverse1(function(cws) {
-              return pure31(outputArabicWords(ops)(cws));
+              return pure32(outputArabicWords(ops)(cws));
             })(lsts);
           };
         };
@@ -32836,11 +32893,11 @@
     return function(dictApplicative) {
       var outputArabicWordsPar2 = outputArabicWordsPar1(dictApplicative);
       return function(dictApplicative1) {
-        var map38 = map(dictApplicative1.Apply0().Functor0());
+        var map39 = map(dictApplicative1.Apply0().Functor0());
         var outputArabicWordsPar3 = outputArabicWordsPar2(dictApplicative1);
         return function(ops) {
           return function(lsts) {
-            return map38(fold3)(outputArabicWordsPar3(ops)(lsts));
+            return map39(fold3)(outputArabicWordsPar3(ops)(lsts));
           };
         };
       };
@@ -32879,15 +32936,15 @@
       }
       ;
       if (v instanceof Just) {
-        var $18 = p2(v.value0);
-        if ($18) {
+        var $19 = p2(v.value0);
+        if ($19) {
           return new Just(v.value0);
         }
         ;
         return Nothing.value;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Helpers (line 81, column 11 - line 81, column 32): " + [v.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Helpers (line 92, column 11 - line 92, column 32): " + [v.constructor.name]);
     };
     return bind18(map28(fx)(peekChar1))(maybe(pure21(Nothing.value))(function(x) {
       return voidLeft5(anyChar)(new Just(x));
@@ -32903,7 +32960,7 @@
         return v(v1.value0);
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Helpers (line 86, column 1 - line 86, column 58): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Helpers (line 97, column 1 - line 97, column 58): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var isUpperC = function(c) {
@@ -32929,6 +32986,14 @@
     var comb2 = lift22(snocC);
     var comb1 = lift22(consC);
     return map28(Punct.create)(comb2(comb1(codePointC("|"))(takeWhile1(function(x) {
+      return notEq2(x)(pip);
+    })))(codePointC("|")));
+  }();
+  var parsePipeW = /* @__PURE__ */ function() {
+    var pip = codePointFromChar("|");
+    var comb2 = lift22(snocC);
+    var comb1 = lift22(consC);
+    return map28(PunctW.create)(comb2(comb1(codePointC("|"))(takeWhile1(function(x) {
       return notEq2(x)(pip);
     })))(codePointC("|")));
   }();
@@ -33159,7 +33224,7 @@
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 268, column 1 - line 268, column 50): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 269, column 1 - line 269, column 50): " + [v.constructor.name]);
   };
   var parseYeh = /* @__PURE__ */ bind19(peekChar2)(function(c) {
     if (c instanceof Just && c.value0 === "\u0652") {
@@ -33232,7 +33297,7 @@
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 281, column 1 - line 281, column 50): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 282, column 1 - line 282, column 50): " + [v.constructor.name]);
   };
   var parseM$prime = function(v) {
     if (v instanceof Nothing) {
@@ -33250,7 +33315,7 @@
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 239, column 1 - line 239, column 50): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 240, column 1 - line 240, column 50): " + [v.constructor.name]);
   };
   var parseN$prime = function(v) {
     if (v instanceof Nothing) {
@@ -33268,7 +33333,7 @@
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 252, column 1 - line 252, column 50): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 253, column 1 - line 253, column 50): " + [v.constructor.name]);
   };
   var parseP$prime = function(v) {
     if (v instanceof Nothing) {
@@ -33288,6 +33353,24 @@
     ;
     throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 194, column 1 - line 194, column 50): " + [v.constructor.name]);
   };
+  var parseT$prime = function(v) {
+    if (v instanceof Nothing) {
+      return pure23(T.value);
+    }
+    ;
+    if (v instanceof Just) {
+      if (isHamzah$prime(v.value0)) {
+        return applySecond2(anyChar)(pure23(TY.value));
+      }
+      ;
+      if (otherwise) {
+        return pure23(T.value);
+      }
+      ;
+    }
+    ;
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 200, column 1 - line 200, column 50): " + [v.constructor.name]);
+  };
   var parseTL = function(v) {
     if (v instanceof Nothing) {
       return pure23(TL.value);
@@ -33304,7 +33387,7 @@
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 214, column 1 - line 214, column 50): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 215, column 1 - line 215, column 50): " + [v.constructor.name]);
   };
   var parseTS = function(v) {
     if (v instanceof Nothing) {
@@ -33322,29 +33405,7 @@
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 208, column 1 - line 208, column 50): " + [v.constructor.name]);
-  };
-  var parseT$prime = function(v) {
-    if (v instanceof Nothing) {
-      return pure23(T.value);
-    }
-    ;
-    if (v instanceof Just) {
-      if (v.value0 === "s" || v.value0 === "S") {
-        return bind19(applySecond2(anyChar)(peekChar2))(parseTS);
-      }
-      ;
-      if (v.value0 === "l" || v.value0 === "L") {
-        return bind19(applySecond2(anyChar)(peekChar2))(parseTL);
-      }
-      ;
-      if (otherwise) {
-        return pure23(T.value);
-      }
-      ;
-    }
-    ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 200, column 1 - line 200, column 50): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 209, column 1 - line 209, column 50): " + [v.constructor.name]);
   };
   var parseW$prime = function(v) {
     if (v instanceof Nothing) {
@@ -33362,7 +33423,7 @@
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 301, column 1 - line 301, column 50): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 302, column 1 - line 302, column 50): " + [v.constructor.name]);
   };
   var parseWaw = /* @__PURE__ */ bind19(peekChar2)(function(c) {
     if (c instanceof Just && c.value0 === "\u0654") {
@@ -33636,7 +33697,7 @@
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 498, column 1 - line 498, column 40): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Arabic (line 499, column 1 - line 499, column 40): " + [v.constructor.name]);
   };
   var arabicRange = function(cp) {
     var c2 = codePointFromChar("\u06FF");
@@ -33671,17 +33732,17 @@
     return function(dictApplicative) {
       var parTraverse1 = parTraverse2(dictApplicative)(traversableList);
       return function(dictApplicative1) {
-        var pure31 = pure(dictApplicative1);
+        var pure32 = pure(dictApplicative1);
         var map116 = map(dictApplicative1.Apply0().Functor0());
         return function(v) {
           return function(v1) {
             if (v instanceof Left) {
-              return pure31(map30(singleton3)(runParser(v.value0)(v1)));
+              return pure32(map30(singleton3)(runParser(v.value0)(v1)));
             }
             ;
             if (v instanceof Right) {
               return map116(sequence2)(parTraverse1(function(x) {
-                return pure31(runParser(x)(v1));
+                return pure32(runParser(x)(v1));
               })(v.value0));
             }
             ;
@@ -34662,7 +34723,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 306, column 1 - line 306, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 323, column 1 - line 323, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseS2 = /* @__PURE__ */ bind21(/* @__PURE__ */ map32(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -34717,7 +34778,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 239, column 1 - line 239, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 256, column 1 - line 256, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseD2 = /* @__PURE__ */ bind21(/* @__PURE__ */ map32(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -34770,7 +34831,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 189, column 1 - line 189, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 206, column 1 - line 206, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseKHY2 = function(v) {
@@ -34790,7 +34851,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 156, column 1 - line 156, column 65): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 173, column 1 - line 173, column 65): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseXU2 = function(v) {
@@ -34810,7 +34871,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 219, column 1 - line 219, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 236, column 1 - line 236, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseXW = function(v) {
@@ -34830,7 +34891,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 225, column 1 - line 225, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 242, column 1 - line 242, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var isH = function(v) {
@@ -34861,7 +34922,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 486, column 1 - line 486, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 503, column 1 - line 503, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseE2 = /* @__PURE__ */ bind21(/* @__PURE__ */ map32(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -34886,7 +34947,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 195, column 1 - line 195, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 212, column 1 - line 212, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG$prime3 = function(v) {
@@ -34910,7 +34971,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 182, column 1 - line 182, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 199, column 1 - line 199, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG2 = /* @__PURE__ */ bind21(/* @__PURE__ */ map32(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -34939,7 +35000,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 149, column 1 - line 149, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 166, column 1 - line 166, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseLonly$prime = function(v) {
@@ -34959,7 +35020,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 410, column 1 - line 410, column 66): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 427, column 1 - line 427, column 66): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseLonly = /* @__PURE__ */ bind21(/* @__PURE__ */ map32(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -34988,7 +35049,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 212, column 1 - line 212, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 229, column 1 - line 229, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseX2 = /* @__PURE__ */ bind21(/* @__PURE__ */ map32(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -35035,7 +35096,7 @@
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 440, column 1 - line 440, column 53): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 457, column 1 - line 457, column 53): " + [v.constructor.name]);
   };
   var isApostCP = /* @__PURE__ */ disj1(/* @__PURE__ */ eqCP("'"))(/* @__PURE__ */ disj1(/* @__PURE__ */ eqCP("`"))(/* @__PURE__ */ disj1(/* @__PURE__ */ eqCP("\u0315"))(/* @__PURE__ */ disj1(/* @__PURE__ */ eqCP("\u0313"))(/* @__PURE__ */ disj1(/* @__PURE__ */ eqCP("\u02BC"))(/* @__PURE__ */ eqCP("7"))))));
   var parsePuncts3 = /* @__PURE__ */ function() {
@@ -35088,7 +35149,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 168, column 1 - line 168, column 63): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 185, column 1 - line 185, column 63): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseKH2 = function(v) {
@@ -35112,7 +35173,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 142, column 1 - line 142, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 159, column 1 - line 159, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQ2 = /* @__PURE__ */ bind21(/* @__PURE__ */ map32(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -35137,7 +35198,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 162, column 1 - line 162, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 179, column 1 - line 179, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK$prime3 = function(v) {
@@ -35165,7 +35226,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 134, column 1 - line 134, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 151, column 1 - line 151, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK2 = /* @__PURE__ */ bind21(/* @__PURE__ */ map32(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -35190,7 +35251,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 272, column 1 - line 272, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 289, column 1 - line 289, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseP2 = /* @__PURE__ */ bind21(/* @__PURE__ */ map32(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -35215,7 +35276,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 300, column 1 - line 300, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 317, column 1 - line 317, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseTS3 = function(v) {
@@ -35235,7 +35296,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 294, column 1 - line 294, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 311, column 1 - line 311, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseC = /* @__PURE__ */ bind21(/* @__PURE__ */ map32(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -35268,7 +35329,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 286, column 1 - line 286, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 303, column 1 - line 303, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseT2 = /* @__PURE__ */ bind21(/* @__PURE__ */ map32(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -35288,7 +35349,7 @@
         return new Min2(v1);
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 534, column 1 - line 534, column 51): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 734, column 1 - line 734, column 51): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseGrubbWord$prime = function(ltr) {
@@ -35300,7 +35361,7 @@
       return map32(Cons.create(ltr))(many(parseGrubbLetter));
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 528, column 1 - line 528, column 67): " + [ltr.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Grubb (line 717, column 1 - line 717, column 67): " + [ltr.constructor.name]);
   };
   var parseGrubbWord = /* @__PURE__ */ bind21(parseGrubbLetter)(parseGrubbWord$prime);
   var parseGrubbMain = /* @__PURE__ */ function() {
@@ -35968,7 +36029,7 @@
           return v(v1.value0);
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 428, column 9 - line 428, column 32): " + [v.constructor.name, v1.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 455, column 9 - line 455, column 32): " + [v.constructor.name, v1.constructor.name]);
       };
     };
     return discard(discardUnit)(bindParserT)($$void(functorParserT)($$char("\u0294")))(function() {
@@ -36020,7 +36081,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 240, column 1 - line 240, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 261, column 1 - line 261, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseD4 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -36050,6 +36111,66 @@
     ;
     return false;
   };
+  var isLabial$prime = function(v) {
+    if (v === "\u1D42") {
+      return true;
+    }
+    ;
+    if (v === "\u02B7") {
+      return true;
+    }
+    ;
+    return false;
+  };
+  var parseXU4 = function(v) {
+    return function(v1) {
+      if (v1 instanceof Nothing) {
+        return pure27(makeCase(v)(XU.value));
+      }
+      ;
+      if (v1 instanceof Just) {
+        if (isLabial$prime(v1.value0)) {
+          return applySecond6(anyChar)(pure27(makeCase(v)(XUW.value)));
+        }
+        ;
+        if (otherwise) {
+          return pure27(makeCase(v)(XU.value));
+        }
+        ;
+      }
+      ;
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 244, column 1 - line 244, column 62): " + [v.constructor.name, v1.constructor.name]);
+    };
+  };
+  var parseX$prime5 = function(v) {
+    return function(v1) {
+      if (v1 instanceof Nothing) {
+        return pure27(makeCase(v)(X.value));
+      }
+      ;
+      if (v1 instanceof Just) {
+        if (isWedge2(v1.value0)) {
+          return bind23(applySecond6(anyChar)(peekChar6))(parseXU4(v));
+        }
+        ;
+        if (isLabial$prime(v1.value0)) {
+          return applySecond6(anyChar)(pure27(makeCase(v)(XW.value)));
+        }
+        ;
+        if (otherwise) {
+          return pure27(makeCase(v)(X.value));
+        }
+        ;
+      }
+      ;
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 237, column 1 - line 237, column 64): " + [v.constructor.name, v1.constructor.name]);
+    };
+  };
+  var parseX4 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+    return x === "x" || x === "X";
+  })))(function(b2) {
+    return bind23(peekChar6)(parseX$prime5(b2));
+  });
   var isLabial5 = function(v) {
     if (v === "w") {
       return true;
@@ -36087,7 +36208,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 199, column 1 - line 199, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 220, column 1 - line 220, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG$prime5 = function(v) {
@@ -36111,7 +36232,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 177, column 1 - line 177, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 198, column 1 - line 198, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG4 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -36141,7 +36262,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 118, column 1 - line 118, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 139, column 1 - line 139, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQY2 = function(v) {
@@ -36161,58 +36282,9 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 153, column 1 - line 153, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 174, column 1 - line 174, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
-  var parseXU4 = function(v) {
-    return function(v1) {
-      if (v1 instanceof Nothing) {
-        return pure27(makeCase(v)(XU.value));
-      }
-      ;
-      if (v1 instanceof Just) {
-        if (isW4(v1.value0)) {
-          return applySecond6(anyChar)(pure27(makeCase(v)(XUW.value)));
-        }
-        ;
-        if (otherwise) {
-          return pure27(makeCase(v)(XU.value));
-        }
-        ;
-      }
-      ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 223, column 1 - line 223, column 62): " + [v.constructor.name, v1.constructor.name]);
-    };
-  };
-  var parseX$prime5 = function(v) {
-    return function(v1) {
-      if (v1 instanceof Nothing) {
-        return pure27(makeCase(v)(X.value));
-      }
-      ;
-      if (v1 instanceof Just) {
-        if (isWedge2(v1.value0)) {
-          return bind23(applySecond6(anyChar)(peekChar6))(parseXU4(v));
-        }
-        ;
-        if (isW4(v1.value0)) {
-          return applySecond6(anyChar)(pure27(makeCase(v)(XW.value)));
-        }
-        ;
-        if (otherwise) {
-          return pure27(makeCase(v)(X.value));
-        }
-        ;
-      }
-      ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 216, column 1 - line 216, column 64): " + [v.constructor.name, v1.constructor.name]);
-    };
-  };
-  var parseX4 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
-    return x === "x" || x === "X";
-  })))(function(b2) {
-    return bind23(peekChar6)(parseX$prime5(b2));
-  });
   var isApostCode = /* @__PURE__ */ disj13(/* @__PURE__ */ eq18(/* @__PURE__ */ codePointFromChar("'")))(/* @__PURE__ */ disj13(/* @__PURE__ */ eq18(/* @__PURE__ */ codePointFromChar("`")))(/* @__PURE__ */ disj13(/* @__PURE__ */ eq18(/* @__PURE__ */ codePointFromChar("\u0315")))(/* @__PURE__ */ eq18(/* @__PURE__ */ codePointFromChar("\u0313")))));
   var parsePuncts5 = /* @__PURE__ */ function() {
     var pip = codePointFromChar("|");
@@ -36256,7 +36328,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 300, column 1 - line 300, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 321, column 1 - line 321, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseC3 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -36281,7 +36353,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 353, column 1 - line 353, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 374, column 1 - line 374, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseJ3 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -36306,7 +36378,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 125, column 1 - line 125, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 146, column 1 - line 146, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK$prime5 = function(v) {
@@ -36330,7 +36402,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 109, column 1 - line 109, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 130, column 1 - line 130, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK4 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -36355,7 +36427,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 367, column 1 - line 367, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 388, column 1 - line 388, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseL3 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -36380,7 +36452,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 322, column 1 - line 322, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 343, column 1 - line 343, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseM3 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -36405,7 +36477,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 336, column 1 - line 336, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 357, column 1 - line 357, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseN3 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -36430,7 +36502,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 272, column 1 - line 272, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 293, column 1 - line 293, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseP4 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -36455,7 +36527,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 160, column 1 - line 160, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 181, column 1 - line 181, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQ$prime3 = function(v) {
@@ -36479,7 +36551,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 144, column 1 - line 144, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 165, column 1 - line 165, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQ4 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -36504,7 +36576,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 286, column 1 - line 286, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 307, column 1 - line 307, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseT4 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -36529,7 +36601,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 412, column 1 - line 412, column 63): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 439, column 1 - line 439, column 63): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseTL5 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -36554,7 +36626,7 @@
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 389, column 1 - line 389, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Napa (line 416, column 1 - line 416, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseW3 = /* @__PURE__ */ bind23(/* @__PURE__ */ map34(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
@@ -36571,14 +36643,1048 @@
     return fromRight(Nil.value)(runParserChunk5(chunkifyText(512)(256)(txt))(map34(toWordsL)(parseNapa)));
   };
 
-  // output/Kwakwala.Parsing.Umista/index.js
-  var pure28 = /* @__PURE__ */ pure(applicativeParserT);
-  var applySecond7 = /* @__PURE__ */ applySecond(applyParserT);
-  var bind24 = /* @__PURE__ */ bind(bindParserT);
+  // output/Kwakwala.Parsing.Syllabic/index.js
+  var lessThanOrEq3 = /* @__PURE__ */ lessThanOrEq(ordCodePoint);
+  var lessThan2 = /* @__PURE__ */ lessThan(ordCodePoint);
   var map35 = /* @__PURE__ */ map(functorParserT);
-  var alt13 = /* @__PURE__ */ alt(altParserT);
-  var voidLeft10 = /* @__PURE__ */ voidLeft(functorParserT);
+  var notEq4 = /* @__PURE__ */ notEq(eqCodePoint);
+  var applySecond7 = /* @__PURE__ */ applySecond(applyParserT);
+  var pure28 = /* @__PURE__ */ pure(applicativeParserT);
+  var bind24 = /* @__PURE__ */ bind(bindParserT);
   var peekChar7 = /* @__PURE__ */ peekChar(monadRecIdentity);
+  var alt13 = /* @__PURE__ */ alt(altParserT);
+  var mkCP = codePointFromChar;
+  var isCasBlockX$prime = function(c) {
+    return lessThanOrEq3(mkCP("\u18B0"))(c) && lessThanOrEq3(c)(mkCP("\u18FF"));
+  };
+  var isCasBlock$prime = function(c) {
+    return lessThanOrEq3(mkCP("\u1400"))(c) && lessThanOrEq3(c)(mkCP("\u167F"));
+  };
+  var isCAS$prime = function(c) {
+    return isCasBlock$prime(c) || isCasBlockX$prime(c);
+  };
+  var isNotCAS$prime = function(c) {
+    return lessThan2(c)(mkCP("\u1400")) || !isCAS$prime(c);
+  };
+  var parsePunctsW = /* @__PURE__ */ function() {
+    return map35(PunctW.create)(takeWhile1(function(x) {
+      return isNotCAS$prime(x) && notEq4(x)(mkCP("|"));
+    }));
+  }();
+  var consumeSyl = function(cns) {
+    return function(vwl) {
+      return applySecond7(anyChar)(pure28(new Cons(cns, new Cons(vwl, Nil.value))));
+    };
+  };
+  var consumeLab = function(cnsJ) {
+    return function(cnsW) {
+      return function(vwl) {
+        return bind24(anyChar)(function() {
+          return bind24(peekChar7)(function(x) {
+            if (x instanceof Just && x.value0 === "\u1424") {
+              return applySecond7(anyChar)(pure28(new Cons(cnsW, new Cons(vwl, Nil.value))));
+            }
+            ;
+            return pure28(new Cons(cnsJ, new Cons(vwl, Nil.value)));
+          });
+        });
+      };
+    };
+  };
+  var consumeCoda2 = function(chr) {
+    return function(coda1) {
+      return function(coda2) {
+        return bind24(anyChar)(function() {
+          return bind24(peekChar7)(function(x) {
+            if (x instanceof Just && x.value0 === chr) {
+              return applySecond7(anyChar)(pure28(new Cons(coda2, Nil.value)));
+            }
+            ;
+            return pure28(new Cons(coda1, Nil.value));
+          });
+        });
+      };
+    };
+  };
+  var consumeCoda = function(coda) {
+    return applySecond7(anyChar)(pure28(new Cons(coda, Nil.value)));
+  };
+  var continueGlot = function(v) {
+    if (v instanceof Nothing) {
+      return pure28(new Cons(Y.value, Nil.value));
+    }
+    ;
+    if (v instanceof Just) {
+      if (v.value0 === "\u160D") {
+        return consumeSyl(MY.value)(A.value);
+      }
+      ;
+      if (v.value0 === "\u160B") {
+        return consumeSyl(MY.value)(E.value);
+      }
+      ;
+      if (v.value0 === "\u160C") {
+        return consumeSyl(MY.value)(I.value);
+      }
+      ;
+      if (v.value0 === "\u1609") {
+        return consumeSyl(MY.value)(O.value);
+      }
+      ;
+      if (v.value0 === "\u1608") {
+        return consumeSyl(MY.value)(U.value);
+      }
+      ;
+      if (v.value0 === "\u160A") {
+        return consumeSyl(MY.value)(AU.value);
+      }
+      ;
+      if (v.value0 === "\u1607") {
+        return consumeSyl(NY.value)(A.value);
+      }
+      ;
+      if (v.value0 === "\u1605") {
+        return consumeSyl(NY.value)(E.value);
+      }
+      ;
+      if (v.value0 === "\u1606") {
+        return consumeSyl(NY.value)(I.value);
+      }
+      ;
+      if (v.value0 === "\u1603") {
+        return consumeSyl(NY.value)(O.value);
+      }
+      ;
+      if (v.value0 === "\u1602") {
+        return consumeSyl(NY.value)(U.value);
+      }
+      ;
+      if (v.value0 === "\u1604") {
+        return consumeSyl(NY.value)(AU.value);
+      }
+      ;
+      if (v.value0 === "\u1627") {
+        return consumeSyl(LY.value)(A.value);
+      }
+      ;
+      if (v.value0 === "\u1625") {
+        return consumeSyl(LY.value)(E.value);
+      }
+      ;
+      if (v.value0 === "\u1626") {
+        return consumeSyl(LY.value)(I.value);
+      }
+      ;
+      if (v.value0 === "\u1623") {
+        return consumeSyl(LY.value)(O.value);
+      }
+      ;
+      if (v.value0 === "\u1622") {
+        return consumeSyl(LY.value)(U.value);
+      }
+      ;
+      if (v.value0 === "\u1624") {
+        return consumeSyl(LY.value)(AU.value);
+      }
+      ;
+      if (v.value0 === "\u1613") {
+        return consumeSyl(JY.value)(A.value);
+      }
+      ;
+      if (v.value0 === "\u1611") {
+        return consumeSyl(JY.value)(E.value);
+      }
+      ;
+      if (v.value0 === "\u1612") {
+        return consumeSyl(JY.value)(I.value);
+      }
+      ;
+      if (v.value0 === "\u160F") {
+        return consumeSyl(JY.value)(O.value);
+      }
+      ;
+      if (v.value0 === "\u160E") {
+        return consumeSyl(JY.value)(U.value);
+      }
+      ;
+      if (v.value0 === "\u1610") {
+        return consumeSyl(JY.value)(AU.value);
+      }
+      ;
+      if (v.value0 === "\u15D5") {
+        return consumeSyl(WY.value)(A.value);
+      }
+      ;
+      if (v.value0 === "\u15D3") {
+        return consumeSyl(WY.value)(E.value);
+      }
+      ;
+      if (v.value0 === "\u15D4") {
+        return consumeSyl(WY.value)(I.value);
+      }
+      ;
+      if (v.value0 === "\u15D1") {
+        return consumeSyl(WY.value)(O.value);
+      }
+      ;
+      if (v.value0 === "\u15D0") {
+        return consumeSyl(WY.value)(U.value);
+      }
+      ;
+      if (v.value0 === "\u15D2") {
+        return consumeSyl(WY.value)(AU.value);
+      }
+      ;
+      if (v.value0 === "\u1466") {
+        return consumeCoda(MY.value);
+      }
+      ;
+      if (v.value0 === "\u1423") {
+        return consumeCoda(NY.value);
+      }
+      ;
+      if (v.value0 === "\u144A") {
+        return consumeCoda(LY.value);
+      }
+      ;
+      if (v.value0 === "\u156A") {
+        return consumeCoda(JY.value);
+      }
+      ;
+      if (v.value0 === "\u141E") {
+        return consumeCoda(WY.value);
+      }
+      ;
+      return pure28(new Cons(Y.value, Nil.value));
+    }
+    ;
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Syllabic (line 510, column 1 - line 510, column 64): " + [v.constructor.name]);
+  };
+  var parseTheLetter = /* @__PURE__ */ bind24(peekChar$prime)(function(c) {
+    if (c === "\u1427") {
+      return applySecond7(anyChar)(bind24(peekChar7)(continueGlot));
+    }
+    ;
+    if (c === "\u160D") {
+      return consumeSyl(M.value)(A.value);
+    }
+    ;
+    if (c === "\u160B") {
+      return consumeSyl(M.value)(E.value);
+    }
+    ;
+    if (c === "\u160C") {
+      return consumeSyl(M.value)(I.value);
+    }
+    ;
+    if (c === "\u1609") {
+      return consumeSyl(M.value)(O.value);
+    }
+    ;
+    if (c === "\u1608") {
+      return consumeSyl(M.value)(U.value);
+    }
+    ;
+    if (c === "\u160A") {
+      return consumeSyl(M.value)(AU.value);
+    }
+    ;
+    if (c === "\u1607") {
+      return consumeSyl(N.value)(A.value);
+    }
+    ;
+    if (c === "\u1605") {
+      return consumeSyl(N.value)(E.value);
+    }
+    ;
+    if (c === "\u1606") {
+      return consumeSyl(N.value)(I.value);
+    }
+    ;
+    if (c === "\u1603") {
+      return consumeSyl(N.value)(O.value);
+    }
+    ;
+    if (c === "\u1602") {
+      return consumeSyl(N.value)(U.value);
+    }
+    ;
+    if (c === "\u1604") {
+      return consumeSyl(N.value)(AU.value);
+    }
+    ;
+    if (c === "\u1645") {
+      return consumeSyl(P.value)(A.value);
+    }
+    ;
+    if (c === "\u1643") {
+      return consumeSyl(P.value)(E.value);
+    }
+    ;
+    if (c === "\u1644") {
+      return consumeSyl(P.value)(I.value);
+    }
+    ;
+    if (c === "\u1641") {
+      return consumeSyl(P.value)(O.value);
+    }
+    ;
+    if (c === "\u1640") {
+      return consumeSyl(P.value)(U.value);
+    }
+    ;
+    if (c === "\u1642") {
+      return consumeSyl(P.value)(AU.value);
+    }
+    ;
+    if (c === "\u15E1") {
+      return consumeSyl(T.value)(A.value);
+    }
+    ;
+    if (c === "\u15DF") {
+      return consumeSyl(T.value)(E.value);
+    }
+    ;
+    if (c === "\u15E0") {
+      return consumeSyl(T.value)(I.value);
+    }
+    ;
+    if (c === "\u15DD") {
+      return consumeSyl(T.value)(O.value);
+    }
+    ;
+    if (c === "\u15DC") {
+      return consumeSyl(T.value)(U.value);
+    }
+    ;
+    if (c === "\u15DE") {
+      return consumeSyl(T.value)(AU.value);
+    }
+    ;
+    if (c === "\u15ED") {
+      return consumeSyl(B.value)(A.value);
+    }
+    ;
+    if (c === "\u15EB") {
+      return consumeSyl(B.value)(E.value);
+    }
+    ;
+    if (c === "\u15EC") {
+      return consumeSyl(B.value)(I.value);
+    }
+    ;
+    if (c === "\u15E9") {
+      return consumeSyl(B.value)(O.value);
+    }
+    ;
+    if (c === "\u15E8") {
+      return consumeSyl(B.value)(U.value);
+    }
+    ;
+    if (c === "\u15EA") {
+      return consumeSyl(B.value)(AU.value);
+    }
+    ;
+    if (c === "\u1455") {
+      return consumeSyl(D.value)(A.value);
+    }
+    ;
+    if (c === "\u1453") {
+      return consumeSyl(D.value)(E.value);
+    }
+    ;
+    if (c === "\u1454") {
+      return consumeSyl(D.value)(I.value);
+    }
+    ;
+    if (c === "\u144E") {
+      return consumeSyl(D.value)(O.value);
+    }
+    ;
+    if (c === "\u144C") {
+      return consumeSyl(D.value)(U.value);
+    }
+    ;
+    if (c === "\u1450") {
+      return consumeSyl(D.value)(AU.value);
+    }
+    ;
+    if (c === "\u164D") {
+      return consumeSyl(PY.value)(A.value);
+    }
+    ;
+    if (c === "\u164B") {
+      return consumeSyl(PY.value)(E.value);
+    }
+    ;
+    if (c === "\u164C") {
+      return consumeSyl(PY.value)(I.value);
+    }
+    ;
+    if (c === "\u1649") {
+      return consumeSyl(PY.value)(O.value);
+    }
+    ;
+    if (c === "\u1648") {
+      return consumeSyl(PY.value)(U.value);
+    }
+    ;
+    if (c === "\u164A") {
+      return consumeSyl(PY.value)(AU.value);
+    }
+    ;
+    if (c === "\u15E7") {
+      return consumeSyl(TY.value)(A.value);
+    }
+    ;
+    if (c === "\u15E5") {
+      return consumeSyl(TY.value)(E.value);
+    }
+    ;
+    if (c === "\u15E6") {
+      return consumeSyl(TY.value)(I.value);
+    }
+    ;
+    if (c === "\u15E3") {
+      return consumeSyl(TY.value)(O.value);
+    }
+    ;
+    if (c === "\u15E2") {
+      return consumeSyl(TY.value)(U.value);
+    }
+    ;
+    if (c === "\u15E4") {
+      return consumeSyl(TY.value)(AU.value);
+    }
+    ;
+    if (c === "\u1666") {
+      return consumeSyl(TS.value)(A.value);
+    }
+    ;
+    if (c === "\u1664") {
+      return consumeSyl(TS.value)(E.value);
+    }
+    ;
+    if (c === "\u1665") {
+      return consumeSyl(TS.value)(I.value);
+    }
+    ;
+    if (c === "\u1662") {
+      return consumeSyl(TS.value)(O.value);
+    }
+    ;
+    if (c === "\u1661") {
+      return consumeSyl(TS.value)(U.value);
+    }
+    ;
+    if (c === "\u1663") {
+      return consumeSyl(TS.value)(AU.value);
+    }
+    ;
+    if (c === "\u1639") {
+      return consumeSyl(TL.value)(A.value);
+    }
+    ;
+    if (c === "\u1637") {
+      return consumeSyl(TL.value)(E.value);
+    }
+    ;
+    if (c === "\u1638") {
+      return consumeSyl(TL.value)(I.value);
+    }
+    ;
+    if (c === "\u1635") {
+      return consumeSyl(TL.value)(O.value);
+    }
+    ;
+    if (c === "\u1634") {
+      return consumeSyl(TL.value)(U.value);
+    }
+    ;
+    if (c === "\u1636") {
+      return consumeSyl(TL.value)(AU.value);
+    }
+    ;
+    if (c === "\u1659") {
+      return consumeSyl(DZ.value)(A.value);
+    }
+    ;
+    if (c === "\u1657") {
+      return consumeSyl(DZ.value)(E.value);
+    }
+    ;
+    if (c === "\u1658") {
+      return consumeSyl(DZ.value)(I.value);
+    }
+    ;
+    if (c === "\u1655") {
+      return consumeSyl(DZ.value)(O.value);
+    }
+    ;
+    if (c === "\u1654") {
+      return consumeSyl(DZ.value)(U.value);
+    }
+    ;
+    if (c === "\u1656") {
+      return consumeSyl(DZ.value)(AU.value);
+    }
+    ;
+    if (c === "\u162D") {
+      return consumeSyl(DL.value)(A.value);
+    }
+    ;
+    if (c === "\u162B") {
+      return consumeSyl(DL.value)(E.value);
+    }
+    ;
+    if (c === "\u162C") {
+      return consumeSyl(DL.value)(I.value);
+    }
+    ;
+    if (c === "\u1629") {
+      return consumeSyl(DL.value)(O.value);
+    }
+    ;
+    if (c === "\u1628") {
+      return consumeSyl(DL.value)(U.value);
+    }
+    ;
+    if (c === "\u162A") {
+      return consumeSyl(DL.value)(AU.value);
+    }
+    ;
+    if (c === "\u166C") {
+      return consumeSyl(TSY.value)(A.value);
+    }
+    ;
+    if (c === "\u166A") {
+      return consumeSyl(TSY.value)(E.value);
+    }
+    ;
+    if (c === "\u166B") {
+      return consumeSyl(TSY.value)(I.value);
+    }
+    ;
+    if (c === "\u1668") {
+      return consumeSyl(TSY.value)(O.value);
+    }
+    ;
+    if (c === "\u1667") {
+      return consumeSyl(TSY.value)(U.value);
+    }
+    ;
+    if (c === "\u1669") {
+      return consumeSyl(TSY.value)(AU.value);
+    }
+    ;
+    if (c === "\u163F") {
+      return consumeSyl(TLY.value)(A.value);
+    }
+    ;
+    if (c === "\u163D") {
+      return consumeSyl(TLY.value)(E.value);
+    }
+    ;
+    if (c === "\u163E") {
+      return consumeSyl(TLY.value)(I.value);
+    }
+    ;
+    if (c === "\u163B") {
+      return consumeSyl(TLY.value)(O.value);
+    }
+    ;
+    if (c === "\u163A") {
+      return consumeSyl(TLY.value)(U.value);
+    }
+    ;
+    if (c === "\u163C") {
+      return consumeSyl(TLY.value)(AU.value);
+    }
+    ;
+    if (c === "\u1653") {
+      return consumeSyl(S.value)(A.value);
+    }
+    ;
+    if (c === "\u1651") {
+      return consumeSyl(S.value)(E.value);
+    }
+    ;
+    if (c === "\u1652") {
+      return consumeSyl(S.value)(I.value);
+    }
+    ;
+    if (c === "\u164F") {
+      return consumeSyl(S.value)(O.value);
+    }
+    ;
+    if (c === "\u164E") {
+      return consumeSyl(S.value)(U.value);
+    }
+    ;
+    if (c === "\u1650") {
+      return consumeSyl(S.value)(AU.value);
+    }
+    ;
+    if (c === "\u1633") {
+      return consumeSyl(LH.value)(A.value);
+    }
+    ;
+    if (c === "\u1631") {
+      return consumeSyl(LH.value)(E.value);
+    }
+    ;
+    if (c === "\u1632") {
+      return consumeSyl(LH.value)(I.value);
+    }
+    ;
+    if (c === "\u162F") {
+      return consumeSyl(LH.value)(O.value);
+    }
+    ;
+    if (c === "\u162E") {
+      return consumeSyl(LH.value)(U.value);
+    }
+    ;
+    if (c === "\u1630") {
+      return consumeSyl(LH.value)(AU.value);
+    }
+    ;
+    if (c === "\u1627") {
+      return consumeSyl(L.value)(A.value);
+    }
+    ;
+    if (c === "\u1625") {
+      return consumeSyl(L.value)(E.value);
+    }
+    ;
+    if (c === "\u1626") {
+      return consumeSyl(L.value)(I.value);
+    }
+    ;
+    if (c === "\u1623") {
+      return consumeSyl(L.value)(O.value);
+    }
+    ;
+    if (c === "\u1622") {
+      return consumeSyl(L.value)(U.value);
+    }
+    ;
+    if (c === "\u1624") {
+      return consumeSyl(L.value)(AU.value);
+    }
+    ;
+    if (c === "\u1613") {
+      return consumeSyl(J.value)(A.value);
+    }
+    ;
+    if (c === "\u1611") {
+      return consumeSyl(J.value)(E.value);
+    }
+    ;
+    if (c === "\u1612") {
+      return consumeSyl(J.value)(I.value);
+    }
+    ;
+    if (c === "\u160F") {
+      return consumeSyl(J.value)(O.value);
+    }
+    ;
+    if (c === "\u160E") {
+      return consumeSyl(J.value)(U.value);
+    }
+    ;
+    if (c === "\u1610") {
+      return consumeSyl(J.value)(AU.value);
+    }
+    ;
+    if (c === "\u15FA") {
+      return consumeLab(K.value)(KW.value)(A.value);
+    }
+    ;
+    if (c === "\u15F8") {
+      return consumeLab(K.value)(KW.value)(E.value);
+    }
+    ;
+    if (c === "\u15F9") {
+      return consumeLab(K.value)(KW.value)(I.value);
+    }
+    ;
+    if (c === "\u15F6") {
+      return consumeLab(K.value)(KW.value)(O.value);
+    }
+    ;
+    if (c === "\u15F5") {
+      return consumeLab(K.value)(KW.value)(U.value);
+    }
+    ;
+    if (c === "\u15F7") {
+      return consumeLab(K.value)(KW.value)(AU.value);
+    }
+    ;
+    if (c === "\u15F4") {
+      return consumeLab(G.value)(GW.value)(A.value);
+    }
+    ;
+    if (c === "\u15F2") {
+      return consumeLab(G.value)(GW.value)(E.value);
+    }
+    ;
+    if (c === "\u15F3") {
+      return consumeLab(G.value)(GW.value)(I.value);
+    }
+    ;
+    if (c === "\u15F0") {
+      return consumeLab(G.value)(GW.value)(O.value);
+    }
+    ;
+    if (c === "\u15EF") {
+      return consumeLab(G.value)(GW.value)(U.value);
+    }
+    ;
+    if (c === "\u15F1") {
+      return consumeLab(G.value)(GW.value)(AU.value);
+    }
+    ;
+    if (c === "\u1600") {
+      return consumeLab(KY.value)(KWY.value)(A.value);
+    }
+    ;
+    if (c === "\u15FE") {
+      return consumeLab(KY.value)(KWY.value)(E.value);
+    }
+    ;
+    if (c === "\u15FF") {
+      return consumeLab(KY.value)(KWY.value)(I.value);
+    }
+    ;
+    if (c === "\u15FC") {
+      return consumeLab(KY.value)(KWY.value)(O.value);
+    }
+    ;
+    if (c === "\u15FB") {
+      return consumeLab(KY.value)(KWY.value)(U.value);
+    }
+    ;
+    if (c === "\u15FD") {
+      return consumeLab(KY.value)(KWY.value)(AU.value);
+    }
+    ;
+    if (c === "\u161B") {
+      return consumeLab(Q.value)(QW.value)(A.value);
+    }
+    ;
+    if (c === "\u1618") {
+      return consumeLab(Q.value)(QW.value)(E.value);
+    }
+    ;
+    if (c === "\u1619") {
+      return consumeLab(Q.value)(QW.value)(I.value);
+    }
+    ;
+    if (c === "\u1616") {
+      return consumeLab(Q.value)(QW.value)(O.value);
+    }
+    ;
+    if (c === "\u1614") {
+      return consumeLab(Q.value)(QW.value)(U.value);
+    }
+    ;
+    if (c === "\u1617") {
+      return consumeLab(Q.value)(QW.value)(AU.value);
+    }
+    ;
+    if (c === "\u15CF") {
+      return consumeLab(GU.value)(GUW.value)(A.value);
+    }
+    ;
+    if (c === "\u15CD") {
+      return consumeLab(GU.value)(GUW.value)(E.value);
+    }
+    ;
+    if (c === "\u15CE") {
+      return consumeLab(GU.value)(GUW.value)(I.value);
+    }
+    ;
+    if (c === "\u15CB") {
+      return consumeLab(GU.value)(GUW.value)(O.value);
+    }
+    ;
+    if (c === "\u15CA") {
+      return consumeLab(GU.value)(GUW.value)(U.value);
+    }
+    ;
+    if (c === "\u15CC") {
+      return consumeLab(GU.value)(GUW.value)(AU.value);
+    }
+    ;
+    if (c === "\u1621") {
+      return consumeLab(QY.value)(QWY.value)(A.value);
+    }
+    ;
+    if (c === "\u161F") {
+      return consumeLab(QY.value)(QWY.value)(E.value);
+    }
+    ;
+    if (c === "\u1620") {
+      return consumeLab(QY.value)(QWY.value)(I.value);
+    }
+    ;
+    if (c === "\u161D") {
+      return consumeLab(QY.value)(QWY.value)(O.value);
+    }
+    ;
+    if (c === "\u161C") {
+      return consumeLab(QY.value)(QWY.value)(U.value);
+    }
+    ;
+    if (c === "\u161E") {
+      return consumeLab(QY.value)(QWY.value)(AU.value);
+    }
+    ;
+    if (c === "\u15C9") {
+      return consumeLab(X.value)(XW.value)(A.value);
+    }
+    ;
+    if (c === "\u15C7") {
+      return consumeLab(X.value)(XW.value)(E.value);
+    }
+    ;
+    if (c === "\u15C8") {
+      return consumeLab(X.value)(XW.value)(I.value);
+    }
+    ;
+    if (c === "\u15C5") {
+      return consumeLab(X.value)(XW.value)(O.value);
+    }
+    ;
+    if (c === "\u15C4") {
+      return consumeLab(X.value)(XW.value)(U.value);
+    }
+    ;
+    if (c === "\u15C6") {
+      return consumeLab(X.value)(XW.value)(AU.value);
+    }
+    ;
+    if (c === "\u15DB") {
+      return consumeLab(XU.value)(XUW.value)(A.value);
+    }
+    ;
+    if (c === "\u15D9") {
+      return consumeLab(XU.value)(XUW.value)(E.value);
+    }
+    ;
+    if (c === "\u15DA") {
+      return consumeLab(XU.value)(XUW.value)(I.value);
+    }
+    ;
+    if (c === "\u15D7") {
+      return consumeLab(XU.value)(XUW.value)(O.value);
+    }
+    ;
+    if (c === "\u15D6") {
+      return consumeLab(XU.value)(XUW.value)(U.value);
+    }
+    ;
+    if (c === "\u15D8") {
+      return consumeLab(XU.value)(XUW.value)(AU.value);
+    }
+    ;
+    if (c === "\u15D5") {
+      return consumeSyl(W.value)(A.value);
+    }
+    ;
+    if (c === "\u15D3") {
+      return consumeSyl(W.value)(E.value);
+    }
+    ;
+    if (c === "\u15D4") {
+      return consumeSyl(W.value)(I.value);
+    }
+    ;
+    if (c === "\u15D1") {
+      return consumeSyl(W.value)(O.value);
+    }
+    ;
+    if (c === "\u15D0") {
+      return consumeSyl(W.value)(U.value);
+    }
+    ;
+    if (c === "\u15D2") {
+      return consumeSyl(W.value)(AU.value);
+    }
+    ;
+    if (c === "\u1438") {
+      return consumeSyl(H.value)(A.value);
+    }
+    ;
+    if (c === "\u1436") {
+      return consumeSyl(H.value)(E.value);
+    }
+    ;
+    if (c === "\u1437") {
+      return consumeSyl(H.value)(I.value);
+    }
+    ;
+    if (c === "\u1431") {
+      return consumeSyl(H.value)(O.value);
+    }
+    ;
+    if (c === "\u142F") {
+      return consumeSyl(H.value)(U.value);
+    }
+    ;
+    if (c === "\u1433") {
+      return consumeSyl(H.value)(AU.value);
+    }
+    ;
+    if (c === "\u140A") {
+      return applySecond7(anyChar)(pure28(new Cons(A.value, Nil.value)));
+    }
+    ;
+    if (c === "\u1408") {
+      return applySecond7(anyChar)(pure28(new Cons(E.value, Nil.value)));
+    }
+    ;
+    if (c === "\u1409") {
+      return applySecond7(anyChar)(pure28(new Cons(I.value, Nil.value)));
+    }
+    ;
+    if (c === "\u1403") {
+      return applySecond7(anyChar)(pure28(new Cons(O.value, Nil.value)));
+    }
+    ;
+    if (c === "\u1401") {
+      return applySecond7(anyChar)(pure28(new Cons(U.value, Nil.value)));
+    }
+    ;
+    if (c === "\u1405") {
+      return applySecond7(anyChar)(pure28(new Cons(AU.value, Nil.value)));
+    }
+    ;
+    if (c === "\u1466") {
+      return consumeCoda(M.value);
+    }
+    ;
+    if (c === "\u1423") {
+      return consumeCoda(N.value);
+    }
+    ;
+    if (c === "\u15EE") {
+      return consumeCoda2("\u15EE")(B.value)(P.value);
+    }
+    ;
+    if (c === "\u142A") {
+      return consumeCoda2("\u142A")(D.value)(T.value);
+    }
+    ;
+    if (c === "\u1429") {
+      return consumeCoda(PY.value);
+    }
+    ;
+    if (c === "\u167E") {
+      return consumeCoda(TY.value);
+    }
+    ;
+    if (c === "\u1646") {
+      return consumeCoda2("\u1646")(DZ.value)(TS.value);
+    }
+    ;
+    if (c === "\u153E") {
+      return consumeCoda(TL.value);
+    }
+    ;
+    if (c === "\u1550") {
+      return consumeCoda(DL.value);
+    }
+    ;
+    if (c === "\u1647") {
+      return consumeCoda(TSY.value);
+    }
+    ;
+    if (c === "\u14EB") {
+      return consumeCoda(TLY.value);
+    }
+    ;
+    if (c === "\u1506") {
+      return consumeCoda(S.value);
+    }
+    ;
+    if (c === "\u14A1") {
+      return consumeCoda(LH.value);
+    }
+    ;
+    if (c === "\u144A") {
+      return consumeCoda(L.value);
+    }
+    ;
+    if (c === "\u156A") {
+      return consumeCoda(J.value);
+    }
+    ;
+    if (c === "\u141E") {
+      return consumeCoda(W.value);
+    }
+    ;
+    if (c === "\u1420") {
+      return consumeCoda2("\u1424")(K.value)(KW.value);
+    }
+    ;
+    if (c === "\u141C") {
+      return consumeCoda2("\u1424")(G.value)(GW.value);
+    }
+    ;
+    if (c === "\u1601") {
+      return consumeCoda2("\u1424")(KY.value)(KWY.value);
+    }
+    ;
+    if (c === "\u14BD") {
+      return consumeCoda2("\u1424")(Q.value)(QW.value);
+    }
+    ;
+    if (c === "\u141F") {
+      return consumeCoda2("\u1424")(GU.value)(GUW.value);
+    }
+    ;
+    if (c === "\u14BE") {
+      return consumeCoda2("\u1424")(QY.value)(QWY.value);
+    }
+    ;
+    if (c === "\u1425") {
+      return consumeCoda2("\u1424")(X.value)(XW.value);
+    }
+    ;
+    if (c === "\u1426") {
+      return consumeCoda2("\u1424")(XU.value)(XUW.value);
+    }
+    ;
+    if (c === "\u144B") {
+      return consumeCoda(H.value);
+    }
+    ;
+    return fail2("Not a syllabic character.");
+  });
+  var parseSyllabicWord = /* @__PURE__ */ map35(/* @__PURE__ */ function() {
+    var $28 = foldMap(foldableNonEmptyList)(monoidList)(map(functorList)(Min2.create));
+    return function($29) {
+      return KwakW.create($28($29));
+    };
+  }())(/* @__PURE__ */ many1(parseTheLetter));
+  var parseSyllabicW1 = /* @__PURE__ */ alt13(parseSyllabicWord)(/* @__PURE__ */ alt13(parsePipeW)(/* @__PURE__ */ alt13(parsePunctsW)(/* @__PURE__ */ map35(function($30) {
+    return PunctW.create(singleton8($30));
+  })(anyCodePoint))));
+  var parseSyllabicW = /* @__PURE__ */ many(parseSyllabicW1);
+  var encodeFromSyllabicW = function(str) {
+    return fromRight(Nil.value)(runParser(str)(parseSyllabicW));
+  };
+
+  // output/Kwakwala.Parsing.Umista/index.js
+  var pure29 = /* @__PURE__ */ pure(applicativeParserT);
+  var applySecond8 = /* @__PURE__ */ applySecond(applyParserT);
+  var bind25 = /* @__PURE__ */ bind(bindParserT);
+  var map36 = /* @__PURE__ */ map(functorParserT);
+  var alt14 = /* @__PURE__ */ alt(altParserT);
+  var voidLeft10 = /* @__PURE__ */ voidLeft(functorParserT);
+  var peekChar8 = /* @__PURE__ */ peekChar(monadRecIdentity);
   var disj14 = /* @__PURE__ */ disj(/* @__PURE__ */ heytingAlgebraFunction(heytingAlgebraBoolean));
   var eq19 = /* @__PURE__ */ eq(eqCodePoint);
   var choice3 = /* @__PURE__ */ choice(foldableArray);
@@ -36588,149 +37694,149 @@
   var runParserChunk6 = /* @__PURE__ */ runParserChunk(monoidList);
   var parseY$prime3 = function(v) {
     if (v instanceof Nothing) {
-      return pure28(new Min2(Y.value));
+      return pure29(new Min2(Y.value));
     }
     ;
     if (v instanceof Just) {
       if (v.value0 === "m" || v.value0 === "M") {
-        return applySecond7(anyChar)(pure28(makeCase(isUpperC(v.value0))(MY.value)));
+        return applySecond8(anyChar)(pure29(makeCase(isUpperC(v.value0))(MY.value)));
       }
       ;
       if (v.value0 === "n" || v.value0 === "N") {
-        return applySecond7(anyChar)(pure28(makeCase(isUpperC(v.value0))(NY.value)));
+        return applySecond8(anyChar)(pure29(makeCase(isUpperC(v.value0))(NY.value)));
       }
       ;
       if (v.value0 === "l" || v.value0 === "L") {
-        return applySecond7(anyChar)(pure28(makeCase(isUpperC(v.value0))(LY.value)));
+        return applySecond8(anyChar)(pure29(makeCase(isUpperC(v.value0))(LY.value)));
       }
       ;
       if (v.value0 === "y" || v.value0 === "Y") {
-        return applySecond7(anyChar)(pure28(makeCase(isUpperC(v.value0))(JY.value)));
+        return applySecond8(anyChar)(pure29(makeCase(isUpperC(v.value0))(JY.value)));
       }
       ;
       if (v.value0 === "w" || v.value0 === "W") {
-        return applySecond7(anyChar)(pure28(makeCase(isUpperC(v.value0))(WY.value)));
+        return applySecond8(anyChar)(pure29(makeCase(isUpperC(v.value0))(WY.value)));
       }
       ;
       if (otherwise) {
-        return pure28(makeCase(isUpperC(v.value0))(Y.value));
+        return pure29(makeCase(isUpperC(v.value0))(Y.value));
       }
       ;
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 388, column 1 - line 388, column 53): " + [v.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 413, column 1 - line 413, column 53): " + [v.constructor.name]);
   };
-  var parseWonly2 = /* @__PURE__ */ bind24(/* @__PURE__ */ map35(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+  var parseWonly2 = /* @__PURE__ */ bind25(/* @__PURE__ */ map36(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "w" || x === "W";
   })))(function(b2) {
-    return pure28(makeCase(b2)(W.value));
+    return pure29(makeCase(b2)(W.value));
   });
   var parseU5 = /* @__PURE__ */ function() {
-    return alt13(voidLeft10($$char("u"))(new Min2(U.value)))(voidLeft10($$char("U"))(new Maj(U.value)));
+    return alt14(voidLeft10($$char("u"))(new Min2(U.value)))(voidLeft10($$char("U"))(new Maj(U.value)));
   }();
   var parseTY3 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(TY.value));
+        return pure29(makeCase(v)(TY.value));
       }
       ;
       if (v1 instanceof Just) {
         if (v1.value0 === "s" || v1.value0 === "S") {
-          return applySecond7(anyChar)(pure28(makeCase(v)(TSY.value)));
+          return applySecond8(anyChar)(pure29(makeCase(v)(TSY.value)));
         }
         ;
         if (v1.value0 === "l" || (v1.value0 === "L" || (v1.value0 === "\u0142" || (v1.value0 === "\u019A" || (v1.value0 === "\u026B" || (v1.value0 === "\u026C" || v1.value0 === "\u0141")))))) {
-          return applySecond7(anyChar)(pure28(makeCase(v)(TLY.value)));
+          return applySecond8(anyChar)(pure29(makeCase(v)(TLY.value)));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(TY.value));
+          return pure29(makeCase(v)(TY.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 226, column 1 - line 226, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 245, column 1 - line 245, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseS5 = /* @__PURE__ */ function() {
-    return alt13(voidLeft10($$char("s"))(new Min2(S.value)))(voidLeft10($$char("S"))(new Maj(S.value)));
+    return alt14(voidLeft10($$char("s"))(new Min2(S.value)))(voidLeft10($$char("S"))(new Maj(S.value)));
   }();
   var parseO5 = /* @__PURE__ */ function() {
-    return alt13(voidLeft10($$char("o"))(new Min2(O.value)))(voidLeft10($$char("O"))(new Maj(O.value)));
+    return alt14(voidLeft10($$char("o"))(new Min2(O.value)))(voidLeft10($$char("O"))(new Maj(O.value)));
   }();
-  var parseNonly2 = /* @__PURE__ */ bind24(/* @__PURE__ */ map35(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+  var parseNonly2 = /* @__PURE__ */ bind25(/* @__PURE__ */ map36(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "n" || x === "N";
   })))(function(b2) {
-    return pure28(makeCase(b2)(N.value));
+    return pure29(makeCase(b2)(N.value));
   });
-  var parseMonly2 = /* @__PURE__ */ bind24(/* @__PURE__ */ map35(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+  var parseMonly2 = /* @__PURE__ */ bind25(/* @__PURE__ */ map36(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "m" || x === "M";
   })))(function(b2) {
-    return pure28(makeCase(b2)(M.value));
+    return pure29(makeCase(b2)(M.value));
   });
-  var parseLonly2 = /* @__PURE__ */ bind24(/* @__PURE__ */ map35(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+  var parseLonly2 = /* @__PURE__ */ bind25(/* @__PURE__ */ map36(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "l" || x === "L";
   })))(function(b2) {
-    return pure28(makeCase(b2)(L.value));
+    return pure29(makeCase(b2)(L.value));
   });
   var parseLH4 = /* @__PURE__ */ function() {
-    return alt13(voidLeft10(satisfy(function(x) {
+    return alt14(voidLeft10(satisfy(function(x) {
       return x === "\u0142" || (x === "\u019A" || (x === "\u026B" || x === "\u026C"));
     }))(new Min2(LH.value)))(voidLeft10($$char("\u0141"))(new Maj(LH.value)));
   }();
-  var parseJonly2 = /* @__PURE__ */ bind24(/* @__PURE__ */ map35(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+  var parseJonly2 = /* @__PURE__ */ bind25(/* @__PURE__ */ map36(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "j" || (x === "J" || (x === "y" || x === "Y"));
   })))(function(b2) {
-    return pure28(makeCase(b2)(J.value));
+    return pure29(makeCase(b2)(J.value));
   });
   var parseI5 = /* @__PURE__ */ function() {
-    return alt13(voidLeft10($$char("i"))(new Min2(I.value)))(voidLeft10($$char("I"))(new Maj(I.value)));
+    return alt14(voidLeft10($$char("i"))(new Min2(I.value)))(voidLeft10($$char("I"))(new Maj(I.value)));
   }();
   var parseH5 = /* @__PURE__ */ function() {
-    return alt13(voidLeft10($$char("h"))(new Min2(H.value)))(voidLeft10($$char("H"))(new Maj(H.value)));
+    return alt14(voidLeft10($$char("h"))(new Min2(H.value)))(voidLeft10($$char("H"))(new Maj(H.value)));
   }();
   var parseE5 = /* @__PURE__ */ function() {
-    return alt13(voidLeft10($$char("e"))(new Min2(E.value)))(voidLeft10($$char("E"))(new Maj(E.value)));
+    return alt14(voidLeft10($$char("e"))(new Min2(E.value)))(voidLeft10($$char("E"))(new Maj(E.value)));
   }();
-  var parseDZ = /* @__PURE__ */ bind24(/* @__PURE__ */ map35(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+  var parseDZ = /* @__PURE__ */ bind25(/* @__PURE__ */ map36(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "z" || (x === "Z" || (x === "\u01F3" || (x === "\u01F1" || x === "\u01F2")));
   })))(function(b2) {
-    return pure28(makeCase(b2)(DZ.value));
+    return pure29(makeCase(b2)(DZ.value));
   });
   var parseD$prime5 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(T.value));
+        return pure29(makeCase(v)(D.value));
       }
       ;
       if (v1 instanceof Just) {
         if (v1.value0 === "z" || v1.value0 === "Z") {
-          return applySecond7(anyChar)(pure28(makeCase(v)(DZ.value)));
+          return applySecond8(anyChar)(pure29(makeCase(v)(DZ.value)));
         }
         ;
         if (v1.value0 === "l" || (v1.value0 === "L" || (v1.value0 === "\u0142" || (v1.value0 === "\u019A" || (v1.value0 === "\u026B" || (v1.value0 === "\u026C" || v1.value0 === "\u0141")))))) {
-          return applySecond7(anyChar)(pure28(makeCase(v)(DL.value)));
+          return applySecond8(anyChar)(pure29(makeCase(v)(DL.value)));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(D.value));
+          return pure29(makeCase(v)(D.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 330, column 1 - line 330, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 349, column 1 - line 349, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
-  var parseD5 = /* @__PURE__ */ bind24(/* @__PURE__ */ satisfy(function(x) {
+  var parseD5 = /* @__PURE__ */ bind25(/* @__PURE__ */ satisfy(function(x) {
     return x === "d" || x === "D";
   }))(function(x) {
-    return bind24(peekChar7)(parseD$prime5(isUpperC(x)));
+    return bind25(peekChar8)(parseD$prime5(isUpperC(x)));
   });
   var parseB5 = /* @__PURE__ */ function() {
-    return alt13(voidLeft10($$char("b"))(new Min2(B.value)))(voidLeft10($$char("B"))(new Maj(B.value)));
+    return alt14(voidLeft10($$char("b"))(new Min2(B.value)))(voidLeft10($$char("B"))(new Maj(B.value)));
   }();
   var parseAU4 = /* @__PURE__ */ function() {
-    return alt13(voidLeft10($$char("\u0101"))(new Min2(AU.value)))(voidLeft10($$char("\u0100"))(new Maj(AU.value)));
+    return alt14(voidLeft10($$char("\u0101"))(new Min2(AU.value)))(voidLeft10($$char("\u0100"))(new Maj(AU.value)));
   }();
   var isUnderline = function(v) {
     if (v === "\u0331") {
@@ -36739,40 +37845,40 @@
     ;
     return false;
   };
-  var parseA5 = /* @__PURE__ */ bind24(/* @__PURE__ */ map35(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+  var parseA5 = /* @__PURE__ */ bind25(/* @__PURE__ */ map36(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "a" || x === "A";
   })))(function(b2) {
-    return bind24(peekChar7)(function(x) {
+    return bind25(peekChar8)(function(x) {
       if (x instanceof Just) {
-        var $67 = isUnderline(x.value0);
-        if ($67) {
-          return applySecond7(anyChar)(pure28(makeCase(b2)(AU.value)));
+        var $71 = isUnderline(x.value0);
+        if ($71) {
+          return applySecond8(anyChar)(pure29(makeCase(b2)(AU.value)));
         }
         ;
-        return pure28(makeCase(b2)(A.value));
+        return pure29(makeCase(b2)(A.value));
       }
       ;
-      return pure28(makeCase(b2)(A.value));
+      return pure29(makeCase(b2)(A.value));
     });
   });
   var parseXW2 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(XW.value));
+        return pure29(makeCase(v)(XW.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isUnderline(v1.value0)) {
-          return applySecond7(peekChar7)(pure28(makeCase(v)(XUW.value)));
+          return applySecond8(peekChar8)(pure29(makeCase(v)(XUW.value)));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(XW.value));
+          return pure29(makeCase(v)(XW.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 354, column 1 - line 354, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 373, column 1 - line 373, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var isLabial6 = function(v) {
@@ -36798,150 +37904,150 @@
   var parseGU4 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(GU.value));
+        return pure29(makeCase(v)(GU.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isW5(v1.value0)) {
-          return applySecond7(anyChar)(pure28(makeCase(v)(GUW.value)));
+          return applySecond8(anyChar)(pure29(makeCase(v)(GUW.value)));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(GU.value));
+          return pure29(makeCase(v)(GU.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 188, column 1 - line 188, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 201, column 1 - line 201, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseG$prime6 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(G.value));
+        return pure29(makeCase(v)(G.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isUnderline(v1.value0)) {
-          return bind24(applySecond7(anyChar)(peekChar7))(parseGU4(v));
+          return bind25(applySecond8(anyChar)(peekChar8))(parseGU4(v));
         }
         ;
         if (isW5(v1.value0)) {
-          return applySecond7(anyChar)(pure28(makeCase(v)(GW.value)));
+          return applySecond8(anyChar)(pure29(makeCase(v)(GW.value)));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(G.value));
+          return pure29(makeCase(v)(G.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 174, column 1 - line 174, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 187, column 1 - line 187, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
-  var parseG5 = /* @__PURE__ */ bind24(/* @__PURE__ */ map35(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+  var parseG5 = /* @__PURE__ */ bind25(/* @__PURE__ */ map36(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "g" || x === "G";
   })))(function(b2) {
-    return bind24(peekChar7)(parseG$prime6(b2));
+    return bind25(peekChar8)(parseG$prime6(b2));
   });
-  var parseGUN = /* @__PURE__ */ bind24(/* @__PURE__ */ map35(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+  var parseGUN = /* @__PURE__ */ bind25(/* @__PURE__ */ map36(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "\u01E5" || x === "\u01E4";
   })))(function(b2) {
-    return bind24(peekChar7)(parseGU4(b2));
+    return bind25(peekChar8)(parseGU4(b2));
   });
   var parseKY5 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(KY.value));
+        return pure29(makeCase(v)(KY.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isW5(v1.value0)) {
-          return applySecond7(anyChar)(pure28(makeCase(v)(KWY.value)));
+          return applySecond8(anyChar)(pure29(makeCase(v)(KWY.value)));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(KY.value));
+          return pure29(makeCase(v)(KY.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 135, column 1 - line 135, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 148, column 1 - line 148, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQY3 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(QW.value));
+        return pure29(makeCase(v)(QW.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isW5(v1.value0)) {
-          return applySecond7(anyChar)(pure28(makeCase(v)(QWY.value)));
+          return applySecond8(anyChar)(pure29(makeCase(v)(QWY.value)));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(QY.value));
+          return pure29(makeCase(v)(QY.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 161, column 1 - line 161, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 174, column 1 - line 174, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseXU5 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(XU.value));
+        return pure29(makeCase(v)(XU.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isW5(v1.value0)) {
-          return applySecond7(anyChar)(pure28(makeCase(v)(XUW.value)));
+          return applySecond8(anyChar)(pure29(makeCase(v)(XUW.value)));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(XU.value));
+          return pure29(makeCase(v)(XU.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 361, column 1 - line 361, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 380, column 1 - line 380, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseX$prime6 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(X.value));
+        return pure29(makeCase(v)(X.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isUnderline(v1.value0)) {
-          return bind24(applySecond7(anyChar)(peekChar7))(parseXU5(v));
+          return bind25(applySecond8(anyChar)(peekChar8))(parseXU5(v));
         }
         ;
         if (isW5(v1.value0)) {
-          return bind24(applySecond7(anyChar)(peekChar7))(parseXW2(v));
+          return bind25(applySecond8(anyChar)(peekChar8))(parseXW2(v));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(X.value));
+          return pure29(makeCase(v)(X.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 347, column 1 - line 347, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 366, column 1 - line 366, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
-  var parseX5 = /* @__PURE__ */ bind24(/* @__PURE__ */ satisfy(function(x) {
+  var parseX5 = /* @__PURE__ */ bind25(/* @__PURE__ */ satisfy(function(x) {
     return x === "x" || x === "X";
   }))(function(x) {
-    return bind24(peekChar7)(parseX$prime6(isUpperC(x)));
+    return bind25(peekChar8)(parseX$prime6(isUpperC(x)));
   });
   var isApostCP3 = /* @__PURE__ */ disj14(/* @__PURE__ */ eqCP("'"))(/* @__PURE__ */ disj14(/* @__PURE__ */ eqCP("`"))(/* @__PURE__ */ disj14(/* @__PURE__ */ eqCP("\u0315"))(/* @__PURE__ */ disj14(/* @__PURE__ */ eqCP("\u0313"))(/* @__PURE__ */ disj14(/* @__PURE__ */ eqCP("\u2019"))(/* @__PURE__ */ eqCP("\u02BC"))))));
   var parsePuncts6 = /* @__PURE__ */ function() {
     var pip = codePointFromChar("|");
-    return map35(Punct.create)(takeWhile1(function(x) {
+    return map36(Punct.create)(takeWhile1(function(x) {
       return !(isAlpha(x) || (isApostCP3(x) || eq19(x)(pip)));
     }));
   }();
@@ -36975,196 +38081,196 @@
   var parseKW6 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(KW.value));
+        return pure29(makeCase(v)(KW.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isApost4(v1.value0)) {
-          return applySecond7(anyChar)(pure28(makeCase(v)(KWY.value)));
+          return applySecond8(anyChar)(pure29(makeCase(v)(KWY.value)));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(KW.value));
+          return pure29(makeCase(v)(KW.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 141, column 1 - line 141, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 154, column 1 - line 154, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
-  var parseP5 = /* @__PURE__ */ bind24(/* @__PURE__ */ map35(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+  var parseP5 = /* @__PURE__ */ bind25(/* @__PURE__ */ map36(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "p" || x === "P";
   })))(function(b2) {
-    return bind24(peekChar7)(function(x) {
+    return bind25(peekChar8)(function(x) {
       if (x instanceof Just) {
-        var $112 = isApost4(x.value0);
-        if ($112) {
-          return applySecond7(anyChar)(pure28(makeCase(b2)(PY.value)));
+        var $119 = isApost4(x.value0);
+        if ($119) {
+          return applySecond8(anyChar)(pure29(makeCase(b2)(PY.value)));
         }
         ;
-        return pure28(makeCase(b2)(P.value));
+        return pure29(makeCase(b2)(P.value));
       }
       ;
-      return pure28(makeCase(b2)(P.value));
+      return pure29(makeCase(b2)(P.value));
     });
   });
   var parseQW4 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(QW.value));
+        return pure29(makeCase(v)(QW.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isApost4(v1.value0)) {
-          return applySecond7(anyChar)(pure28(makeCase(v)(QWY.value)));
+          return applySecond8(anyChar)(pure29(makeCase(v)(QWY.value)));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(QW.value));
+          return pure29(makeCase(v)(QW.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 155, column 1 - line 155, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 168, column 1 - line 168, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseQ5 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(Q.value));
+        return pure29(makeCase(v)(Q.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isApost4(v1.value0)) {
-          return bind24(applySecond7(anyChar)(peekChar7))(parseQY3(v));
+          return bind25(applySecond8(anyChar)(peekChar8))(parseQY3(v));
         }
         ;
         if (isW5(v1.value0)) {
-          return bind24(applySecond7(anyChar)(peekChar7))(parseQW4(v));
+          return bind25(applySecond8(anyChar)(peekChar8))(parseQW4(v));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(Q.value));
+          return pure29(makeCase(v)(Q.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 148, column 1 - line 148, column 61): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 161, column 1 - line 161, column 61): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseK$prime6 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(K.value));
+        return pure29(makeCase(v)(K.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isUnderline(v1.value0)) {
-          return bind24(applySecond7(anyChar)(peekChar7))(parseQ5(v));
+          return bind25(applySecond8(anyChar)(peekChar8))(parseQ5(v));
         }
         ;
         if (isApost4(v1.value0)) {
-          return bind24(applySecond7(anyChar)(peekChar7))(parseKY5(v));
+          return bind25(applySecond8(anyChar)(peekChar8))(parseKY5(v));
         }
         ;
         if (isW5(v1.value0)) {
-          return bind24(applySecond7(anyChar)(peekChar7))(parseKW6(v));
+          return bind25(applySecond8(anyChar)(peekChar8))(parseKW6(v));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(K.value));
+          return pure29(makeCase(v)(K.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 122, column 1 - line 122, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 135, column 1 - line 135, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
-  var parseK5 = /* @__PURE__ */ bind24(/* @__PURE__ */ map35(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+  var parseK5 = /* @__PURE__ */ bind25(/* @__PURE__ */ map36(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "k" || x === "K";
   })))(function(b2) {
-    return bind24(peekChar7)(parseK$prime6(b2));
+    return bind25(peekChar8)(parseK$prime6(b2));
   });
-  var parseKUN = /* @__PURE__ */ bind24(/* @__PURE__ */ map35(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+  var parseKUN = /* @__PURE__ */ bind25(/* @__PURE__ */ map36(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "\u1E35" || (x === "\u1E34" || (x === "q" || x === "Q"));
   })))(function(b2) {
-    return bind24(peekChar7)(parseQ5(b2));
+    return bind25(peekChar8)(parseQ5(b2));
   });
   var parseTL6 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(TS.value));
+        return pure29(makeCase(v)(TL.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isApost4(v1.value0)) {
-          return applySecond7(anyChar)(pure28(makeCase(v)(TLY.value)));
+          return applySecond8(anyChar)(pure29(makeCase(v)(TLY.value)));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(TL.value));
+          return pure29(makeCase(v)(TL.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 239, column 1 - line 239, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 258, column 1 - line 258, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseTS4 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(TS.value));
+        return pure29(makeCase(v)(TS.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isApost4(v1.value0)) {
-          return applySecond7(anyChar)(pure28(makeCase(v)(TSY.value)));
+          return applySecond8(anyChar)(pure29(makeCase(v)(TSY.value)));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(TS.value));
+          return pure29(makeCase(v)(TS.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 233, column 1 - line 233, column 62): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 252, column 1 - line 252, column 62): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseT$prime6 = function(v) {
     return function(v1) {
       if (v1 instanceof Nothing) {
-        return pure28(makeCase(v)(T.value));
+        return pure29(makeCase(v)(T.value));
       }
       ;
       if (v1 instanceof Just) {
         if (isApost4(v1.value0)) {
-          return bind24(applySecond7(anyChar)(peekChar7))(parseTY3(v));
+          return bind25(applySecond8(anyChar)(peekChar8))(parseTY3(v));
         }
         ;
         if (v1.value0 === "s" || v1.value0 === "S") {
-          return bind24(applySecond7(anyChar)(peekChar7))(parseTS4(v));
+          return bind25(applySecond8(anyChar)(peekChar8))(parseTS4(v));
         }
         ;
         if (v1.value0 === "l" || (v1.value0 === "L" || (v1.value0 === "\u0142" || (v1.value0 === "\u019A" || (v1.value0 === "\u026B" || (v1.value0 === "\u026C" || v1.value0 === "\u0141")))))) {
-          return bind24(applySecond7(anyChar)(peekChar7))(parseTL6(v));
+          return bind25(applySecond8(anyChar)(peekChar8))(parseTL6(v));
         }
         ;
         if (otherwise) {
-          return pure28(makeCase(v)(T.value));
+          return pure29(makeCase(v)(T.value));
         }
         ;
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 215, column 1 - line 215, column 64): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 234, column 1 - line 234, column 64): " + [v.constructor.name, v1.constructor.name]);
     };
   };
-  var parseT5 = /* @__PURE__ */ bind24(/* @__PURE__ */ map35(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
+  var parseT5 = /* @__PURE__ */ bind25(/* @__PURE__ */ map36(isUpperC)(/* @__PURE__ */ satisfy(function(x) {
     return x === "t" || x === "T";
   })))(function(b2) {
-    return bind24(peekChar7)(parseT$prime6(b2));
+    return bind25(peekChar8)(parseT$prime6(b2));
   });
-  var parseTS$prime = /* @__PURE__ */ bind24(/* @__PURE__ */ applySecond7(/* @__PURE__ */ $$char("\u02A6"))(peekChar7))(/* @__PURE__ */ parseTS4(false));
-  var parseY5 = /* @__PURE__ */ bind24(/* @__PURE__ */ applySecond7(/* @__PURE__ */ satisfy(isApost4))(peekChar7))(parseY$prime3);
+  var parseTS$prime = /* @__PURE__ */ bind25(/* @__PURE__ */ applySecond8(/* @__PURE__ */ $$char("\u02A6"))(peekChar8))(/* @__PURE__ */ parseTS4(false));
+  var parseY5 = /* @__PURE__ */ bind25(/* @__PURE__ */ applySecond8(/* @__PURE__ */ satisfy(isApost4))(peekChar8))(parseY$prime3);
   var parseUmistaLetterNew = /* @__PURE__ */ choice3([parseA5, parseAU4, parseE5, parseI5, parseO5, parseU5, parseK5, parseG5, parseKUN, parseGUN, parseX5, parseP5, parseT5, parseMonly2, parseNonly2, parseLonly2, parseWonly2, parseY5, parseB5, parseH5, parseD5, parseLH4, parseJonly2, parseS5, parseDZ, parseTS$prime]);
   var caseOf3 = function(v) {
     return function(v1) {
@@ -37176,31 +38282,31 @@
         return new Min2(v1);
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 451, column 1 - line 451, column 48): " + [v.constructor.name, v1.constructor.name]);
+      throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 587, column 1 - line 587, column 48): " + [v.constructor.name, v1.constructor.name]);
     };
   };
   var parseUmistaWordX$prime = function(ltr) {
     if (isKwkVow$prime(ltr)) {
-      return map35(append8(new Cons(caseOf3(ltr)(Y.value), new Cons(ltr, Nil.value))))(many(parseUmistaLetterNew));
+      return map36(append8(new Cons(caseOf3(ltr)(Y.value), new Cons(ltr, Nil.value))))(many(parseUmistaLetterNew));
     }
     ;
     if (otherwise) {
-      return map35(Cons.create(ltr))(many(parseUmistaLetterNew));
+      return map36(Cons.create(ltr))(many(parseUmistaLetterNew));
     }
     ;
-    throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 445, column 1 - line 445, column 69): " + [ltr.constructor.name]);
+    throw new Error("Failed pattern match at Kwakwala.Parsing.Umista (line 573, column 1 - line 573, column 69): " + [ltr.constructor.name]);
   };
-  var parseUmistaWordX = /* @__PURE__ */ bind24(parseUmistaLetterNew)(parseUmistaWordX$prime);
+  var parseUmistaWordX = /* @__PURE__ */ bind25(parseUmistaLetterNew)(parseUmistaWordX$prime);
   var parseUmistaMainNew = /* @__PURE__ */ function() {
-    return alt13(map35(map211(Kwak.create))(parseUmistaWordX))(alt13(map35(singleton3)(parsePipe))(alt13(map35(singleton3)(parsePuncts6))(map35(map115(map115(singleton3)(Punct.create))(singleton8))(anyCodePoint))));
+    return alt14(map36(map211(Kwak.create))(parseUmistaWordX))(alt14(map36(singleton3)(parsePipe))(alt14(map36(singleton3)(parsePuncts6))(map36(map115(map115(singleton3)(Punct.create))(singleton8))(anyCodePoint))));
   }();
-  var parseUmista = /* @__PURE__ */ map35(/* @__PURE__ */ map115(concat)(toList))(/* @__PURE__ */ many1(parseUmistaMainNew));
+  var parseUmista = /* @__PURE__ */ map36(/* @__PURE__ */ map115(concat)(toList))(/* @__PURE__ */ many1(parseUmistaMainNew));
   var encodeFromUmistaWordsL = function(txt) {
-    return fromRight(Nil.value)(runParserChunk6(chunkifyText(512)(256)(txt))(map35(toWordsL)(parseUmista)));
+    return fromRight(Nil.value)(runParserChunk6(chunkifyText(512)(256)(txt))(map36(toWordsL)(parseUmista)));
   };
 
   // output/Kwakwala.Parsing.Parallel/index.js
-  var map36 = /* @__PURE__ */ map(functorParserT);
+  var map37 = /* @__PURE__ */ map(functorParserT);
   var encodeFromUmistaWordsParL$prime = function(dictParallel) {
     var runParserChunkPar2 = runParserChunkPar(dictParallel);
     return function(dictApplicative) {
@@ -37209,7 +38315,20 @@
         var map116 = map(dictApplicative1.Apply0().Functor0());
         var runParserChunkPar22 = runParserChunkPar1(dictApplicative1);
         return function(txt) {
-          return map116(fromRight(Nil.value))(runParserChunkPar22(txt)(map36(toWordsL)(parseUmista)));
+          return map116(fromRight(Nil.value))(runParserChunkPar22(txt)(map37(toWordsL)(parseUmista)));
+        };
+      };
+    };
+  };
+  var encodeFromSyllabicWordsPar$prime = function(dictParallel) {
+    var runParserChunkPar2 = runParserChunkPar(dictParallel);
+    return function(dictApplicative) {
+      var runParserChunkPar1 = runParserChunkPar2(dictApplicative);
+      return function(dictApplicative1) {
+        var map116 = map(dictApplicative1.Apply0().Functor0());
+        var runParserChunkPar22 = runParserChunkPar1(dictApplicative1);
+        return function(txt) {
+          return map116(fromRight(Nil.value))(runParserChunkPar22(txt)(parseSyllabicW));
         };
       };
     };
@@ -37222,7 +38341,7 @@
         var map116 = map(dictApplicative1.Apply0().Functor0());
         var runParserChunkPar22 = runParserChunkPar1(dictApplicative1);
         return function(txt) {
-          return map116(fromRight(Nil.value))(runParserChunkPar22(txt)(map36(toWordsL)(parseNapa)));
+          return map116(fromRight(Nil.value))(runParserChunkPar22(txt)(map37(toWordsL)(parseNapa)));
         };
       };
     };
@@ -37235,7 +38354,7 @@
         var map116 = map(dictApplicative1.Apply0().Functor0());
         var runParserChunkPar22 = runParserChunkPar1(dictApplicative1);
         return function(txt) {
-          return map116(fromRight(Nil.value))(runParserChunkPar22(txt)(map36(toWordsL)(parseIsland)));
+          return map116(fromRight(Nil.value))(runParserChunkPar22(txt)(map37(toWordsL)(parseIsland)));
         };
       };
     };
@@ -37248,7 +38367,7 @@
         var map116 = map(dictApplicative1.Apply0().Functor0());
         var runParserChunkPar22 = runParserChunkPar1(dictApplicative1);
         return function(txt) {
-          return map116(fromRight(Nil.value))(runParserChunkPar22(txt)(map36(toWordsL)(parseGrubbAscii)));
+          return map116(fromRight(Nil.value))(runParserChunkPar22(txt)(map37(toWordsL)(parseGrubbAscii)));
         };
       };
     };
@@ -37261,7 +38380,7 @@
         var map116 = map(dictApplicative1.Apply0().Functor0());
         var runParserChunkPar22 = runParserChunkPar1(dictApplicative1);
         return function(txt) {
-          return map116(fromRight(Nil.value))(runParserChunkPar22(txt)(map36(toWordsL)(parseBoas)));
+          return map116(fromRight(Nil.value))(runParserChunkPar22(txt)(map37(toWordsL)(parseBoas)));
         };
       };
     };
@@ -37308,7 +38427,7 @@
           return outputArabicWords(ops.arabicOrthOptions)(lst);
         }
         ;
-        throw new Error("Failed pattern match at Kwakwala.GUI.Convert (line 244, column 29 - line 250, column 61): " + [kot.constructor.name]);
+        throw new Error("Failed pattern match at Kwakwala.GUI.Convert (line 249, column 29 - line 255, column 61): " + [kot.constructor.name]);
       };
     };
   };
@@ -37360,7 +38479,7 @@
                 return outputArabicWordsParC22(ops.arabicOrthOptions)(lst);
               }
               ;
-              throw new Error("Failed pattern match at Kwakwala.GUI.Convert (line 305, column 31 - line 311, column 65): " + [kot.constructor.name]);
+              throw new Error("Failed pattern match at Kwakwala.GUI.Convert (line 312, column 31 - line 318, column 65): " + [kot.constructor.name]);
             };
           };
         };
@@ -37393,7 +38512,11 @@
         return encodeFromArabicWords(str);
       }
       ;
-      throw new Error("Failed pattern match at Kwakwala.GUI.Convert (line 218, column 26 - line 224, column 41): " + [kit.constructor.name]);
+      if (kit instanceof InSyllabic) {
+        return encodeFromSyllabicW(str);
+      }
+      ;
+      throw new Error("Failed pattern match at Kwakwala.GUI.Convert (line 221, column 26 - line 228, column 40): " + [kit.constructor.name]);
     };
   };
   var encodeByTypeParL$prime = function(dictParallel) {
@@ -37403,6 +38526,7 @@
     var encodeFromIslandWordsParL$prime2 = encodeFromIslandWordsParL$prime(dictParallel);
     var encodeFromBoasWordsParL$prime2 = encodeFromBoasWordsParL$prime(dictParallel);
     var encodeFromArabicWordsPar$prime2 = encodeFromArabicWordsPar$prime(dictParallel);
+    var encodeFromSyllabicWordsPar$prime2 = encodeFromSyllabicWordsPar$prime(dictParallel);
     return function(dictApplicative) {
       var encodeFromGrubbWordsParL$prime1 = encodeFromGrubbWordsParL$prime2(dictApplicative);
       var encodeFromNapaWordsParL$prime1 = encodeFromNapaWordsParL$prime2(dictApplicative);
@@ -37410,6 +38534,7 @@
       var encodeFromIslandWordsParL$prime1 = encodeFromIslandWordsParL$prime2(dictApplicative);
       var encodeFromBoasWordsParL$prime1 = encodeFromBoasWordsParL$prime2(dictApplicative);
       var encodeFromArabicWordsPar$prime1 = encodeFromArabicWordsPar$prime2(dictApplicative);
+      var encodeFromSyllabicWordsPar$prime1 = encodeFromSyllabicWordsPar$prime2(dictApplicative);
       return function(dictApplicative1) {
         var encodeFromGrubbWordsParL$prime22 = encodeFromGrubbWordsParL$prime1(dictApplicative1);
         var encodeFromNapaWordsParL$prime22 = encodeFromNapaWordsParL$prime1(dictApplicative1);
@@ -37417,6 +38542,7 @@
         var encodeFromIslandWordsParL$prime22 = encodeFromIslandWordsParL$prime1(dictApplicative1);
         var encodeFromBoasWordsParL$prime22 = encodeFromBoasWordsParL$prime1(dictApplicative1);
         var encodeFromArabicWordsPar$prime22 = encodeFromArabicWordsPar$prime1(dictApplicative1);
+        var encodeFromSyllabicWordsPar$prime22 = encodeFromSyllabicWordsPar$prime1(dictApplicative1);
         return function(kit) {
           return function(str) {
             if (kit instanceof InGrubb) {
@@ -37443,7 +38569,11 @@
               return encodeFromArabicWordsPar$prime22(str);
             }
             ;
-            throw new Error("Failed pattern match at Kwakwala.GUI.Convert (line 328, column 29 - line 334, column 44): " + [kit.constructor.name]);
+            if (kit instanceof InSyllabic) {
+              return encodeFromSyllabicWordsPar$prime22(str);
+            }
+            ;
+            throw new Error("Failed pattern match at Kwakwala.GUI.Convert (line 335, column 29 - line 342, column 48): " + [kit.constructor.name]);
           };
         };
       };
@@ -37452,10 +38582,10 @@
   var convertOrthographyWL = function(kit) {
     return function(kot) {
       return function(ops) {
-        var $167 = outputByTypeW(kot)(ops);
-        var $168 = encodeByTypeWL(kit);
-        return function($169) {
-          return $167($168($169));
+        var $179 = outputByTypeW(kot)(ops);
+        var $180 = encodeByTypeWL(kit);
+        return function($181) {
+          return $179($180($181));
         };
       };
     };
@@ -37516,21 +38646,21 @@
   var discard12 = /* @__PURE__ */ discard(discardUnit);
   var discard13 = /* @__PURE__ */ discard12(bindAff);
   var liftEffect7 = /* @__PURE__ */ liftEffect(monadEffectAff);
-  var bind25 = /* @__PURE__ */ bind(bindAff);
-  var pure29 = /* @__PURE__ */ pure(applicativeAff);
+  var bind26 = /* @__PURE__ */ bind(bindAff);
+  var pure30 = /* @__PURE__ */ pure(applicativeAff);
   var show4 = /* @__PURE__ */ show(showInt);
   var encodeByTypeParL$prime2 = /* @__PURE__ */ encodeByTypeParL$prime(parallelAff)(applicativeParAff)(applicativeAff);
   var outputByTypePar2 = /* @__PURE__ */ outputByTypePar(parallelAff)(applicativeParAff)(applicativeAff);
   var convertOrthographyParL$prime2 = /* @__PURE__ */ convertOrthographyParL$prime(parallelAff)(applicativeParAff)(monadAff);
   var bind110 = /* @__PURE__ */ bind(bindHalogenM);
-  var map37 = /* @__PURE__ */ map(functorEmitter);
+  var map38 = /* @__PURE__ */ map(functorEmitter);
   var modify_6 = /* @__PURE__ */ modify_2(monadStateHalogenM);
   var pure110 = /* @__PURE__ */ pure(applicativeHalogenM);
   var get9 = /* @__PURE__ */ get(monadStateHalogenM);
   var discard23 = /* @__PURE__ */ discard12(bindHalogenM);
   var when6 = /* @__PURE__ */ when(applicativeHalogenM);
   var eq11 = /* @__PURE__ */ eq(eqKwakInType);
-  var notEq4 = /* @__PURE__ */ notEq(eqKwakInType);
+  var notEq5 = /* @__PURE__ */ notEq(eqKwakInType);
   var void1 = /* @__PURE__ */ $$void(functorHalogenM);
   var query4 = /* @__PURE__ */ query();
   var query12 = /* @__PURE__ */ query4(inputTextIsSymbol)(ordUnit);
@@ -37716,13 +38846,13 @@
             return function(str) {
               return liftAff2($$void9(forkAff(discard13(liftEffect7(debug("Feeding the converter...")))(function() {
                 return discard13(delay(30))(function() {
-                  return bind25(pure29(chunkifyText(1024)(512)(str)))(function(chks) {
+                  return bind26(pure30(chunkifyText(1024)(512)(str)))(function(chks) {
                     return discard13(liftEffect7(debug("String Chunkified: " + (show4(numChunks(chks)) + " chunks."))))(function() {
                       return discard13(liftEffect7(notify(lstnr)(new Notice("String Chunkified."))))(function() {
-                        return bind25(encodeByTypeParL$prime2(kin)(chks))(function(prsdStr) {
+                        return bind26(encodeByTypeParL$prime2(kin)(chks))(function(prsdStr) {
                           return discard13(liftEffect7(notify(lstnr)(new Notice("String Parsed!"))))(function() {
                             return discard13(liftEffect7(notify(lstnr)(new Partway(prsdStr))))(function() {
-                              return bind25(outputByTypePar2(kout)(oops)(prsdStr))(function(newStr) {
+                              return bind26(outputByTypePar2(kout)(oops)(prsdStr))(function(newStr) {
                                 return discard13(liftEffect7(debug("Finished conversion...")))(function() {
                                   return liftEffect7(notify(lstnr)(new Payload(newStr)));
                                 });
@@ -37750,7 +38880,7 @@
             return liftAff2($$void9(forkAff(discard13(liftEffect7(debug("Using Cached Parse...")))(function() {
               return discard13(delay(10))(function() {
                 return discard13(liftEffect7(notify(lstnr)(new Notice("Outputting String..."))))(function() {
-                  return bind25(outputByTypePar2(kout)(oops)(prs))(function(newStr) {
+                  return bind26(outputByTypePar2(kout)(oops)(prs))(function(newStr) {
                     return discard13(liftEffect7(debug("Finished conversion...")))(function() {
                       return liftEffect7(notify(lstnr)(new Payload(newStr)));
                     });
@@ -37772,10 +38902,10 @@
             return function(str) {
               return liftAff2($$void9(forkAff(discard13(liftEffect7(debug("Feeding the converter...")))(function() {
                 return discard13(delay(30))(function() {
-                  return bind25(pure29(chunkifyText(1024)(512)(str)))(function(chks) {
+                  return bind26(pure30(chunkifyText(1024)(512)(str)))(function(chks) {
                     return discard13(liftEffect7(debug("String Chunkified: " + (show4(numChunks(chks)) + " chunks."))))(function() {
                       return discard13(liftEffect7(notify(lstnr)(new Notice("String Chunkified."))))(function() {
-                        return bind25(convertOrthographyParL$prime2(kin)(kout)(oops)(chks))(function(newStr) {
+                        return bind26(convertOrthographyParL$prime2(kin)(kout)(oops)(chks))(function(newStr) {
                           return discard13(liftEffect7(debug("Finished conversion...")))(function() {
                             return liftEffect7(notify(lstnr)(new Payload(newStr)));
                           });
@@ -37800,7 +38930,7 @@
       return function(x) {
         if (x instanceof ParentInitialize) {
           return bind110(liftEffect12(create3))(function(emtPair) {
-            return bind110(subscribe2(map37(handleConverted)(emtPair.emitter)))(function(sbsc) {
+            return bind110(subscribe2(map38(handleConverted)(emtPair.emitter)))(function(sbsc) {
               return modify_6(function(st) {
                 var $162 = {};
                 for (var $163 in st) {
@@ -37837,9 +38967,9 @@
               $165.inputSelect = x.value0;
               return $165;
             }();
-            return discard23(when6(eq11(x.value0)(InIsland.value) && notEq4(st.inputSelect)(InIsland.value))(void1(query12(_inputText)(unit)(new InputSetIsland(unit)))))(function() {
-              return discard23(when6(eq11(x.value0)(InArabic.value) && notEq4(st.inputSelect)(InArabic.value))(void1(query12(_inputText)(unit)(new InputSetArabic(unit)))))(function() {
-                return discard23(when6((eq11(st.inputSelect)(InIsland.value) || eq11(st.inputSelect)(InArabic.value)) && (notEq4(x.value0)(InIsland.value) || notEq4(x.value0)(InArabic.value)))(void1(query12(_inputText)(unit)(new InputSetNonIsland(unit)))))(function() {
+            return discard23(when6(eq11(x.value0)(InIsland.value) && notEq5(st.inputSelect)(InIsland.value))(void1(query12(_inputText)(unit)(new InputSetIsland(unit)))))(function() {
+              return discard23(when6(eq11(x.value0)(InArabic.value) && notEq5(st.inputSelect)(InArabic.value))(void1(query12(_inputText)(unit)(new InputSetArabic(unit)))))(function() {
+                return discard23(when6((eq11(st.inputSelect)(InIsland.value) || eq11(st.inputSelect)(InArabic.value)) && (notEq5(x.value0)(InIsland.value) || notEq5(x.value0)(InArabic.value)))(void1(query12(_inputText)(unit)(new InputSetNonIsland(unit)))))(function() {
                   var st3 = function() {
                     var $168 = eq11(x.value0)(st.inputSelect);
                     if ($168) {
@@ -37857,7 +38987,7 @@
                     $169.inputParsed = Nothing.value;
                     return $169;
                   }();
-                  return discard23(when6(notEq4(x.value0)(st.inputSelect) && isJust(st2.inputParsed))(liftEffect12(debug("Removed Cached Parse (Orthography Change)"))))(function() {
+                  return discard23(when6(notEq5(x.value0)(st.inputSelect) && isJust(st2.inputParsed))(liftEffect12(debug("Removed Cached Parse (Orthography Change)"))))(function() {
                     return discard23(put6(st3))(function() {
                       return void1(query12(_inputText)(unit)(new InputReset2(unit)));
                     });
@@ -38136,18 +39266,18 @@
   }
 
   // output/Kwakwala.GUI.Loading/index.js
-  var bind26 = /* @__PURE__ */ bind(bindAff);
-  var pure30 = /* @__PURE__ */ pure(applicativeAff);
+  var bind27 = /* @__PURE__ */ bind(bindAff);
+  var pure31 = /* @__PURE__ */ pure(applicativeAff);
   var liftEffect8 = /* @__PURE__ */ liftEffect(monadEffectAff);
   var removeElement = function(elm) {
-    return bind26(pure30(toChildNode(elm)))(function(cnod) {
+    return bind27(pure31(toChildNode(elm)))(function(cnod) {
       return liftEffect8(remove(cnod));
     });
   };
   var getLoader = /* @__PURE__ */ selectElement(".loader");
-  var removeLoader = /* @__PURE__ */ bind26(getLoader)(function(mldr) {
+  var removeLoader = /* @__PURE__ */ bind27(getLoader)(function(mldr) {
     if (mldr instanceof Nothing) {
-      return pure30(unit);
+      return pure31(unit);
     }
     ;
     if (mldr instanceof Just) {
